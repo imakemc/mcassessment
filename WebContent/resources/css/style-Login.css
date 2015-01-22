@@ -1,0 +1,213 @@
+/*
+      Created by CSS 	  
+	  http://www.tukta-Studio.com	  	  
+*/
+* { padding: 0; margin: 0; }
+body {
+	margin: 0;
+	padding: 0;
+	color: #666;
+	font-family: "Book Antiqua"; 
+	font-size: 14px;
+	line-height: 1.5em; 
+	background: url(/MISSExamBackOffice/resources/images/bgg.gif) right repeat-y #FCFCFC;
+}
+.bg{ 
+position: absolute;right: 0px; bottom: 0px; z-index:-10;
+background: url(/MISSExamBackOffice/resources/images/bg.png) no-repeat ; width:650px; height:545px;
+}
+.bg2{ 
+position: absolute;left: 0px; bottom: 0px; z-index:-10;
+background: url(/MISSExamBackOffice/resources/images/bg2.png) no-repeat ; width:650px; height:545px;
+}
+a, a:link, a:visited { 
+	color: #000; 
+	font-weight: 400; 
+	text-decoration: underline; 
+}
+a:hover { 
+	text-decoration: none; 
+}
+.cleaner { clear: both }
+p { margin: 0 0 10px 0; padding: 0; }
+img { border: none; }
+
+.language { font-size:10px; color:#666; }
+.language a:{ font-size:10px; color:#666; text-decoration:none;}
+.language a:hover{ font-size:10px; color:#999;text-decoration: underline; }
+
+.footer{ margin-left:0px;font-size:10px; color:#666;}
+#wrapper {
+	width: 800px; z-index:10px;
+	margin: 0 auto; height:500px;}
+.content_box_top { 
+	width: 800px; 
+	height: 10px; 
+	
+}
+
+.content_box_bottom { 
+	width: 800px; 
+	height: 28px; 
+	
+}
+.content_box {
+	clear: both;
+	width: 700px;
+	padding: 0px 0px 0;
+	
+}
+/* ----------- My Form ----------- */
+.loginform{
+margin:0 auto;
+width:550px;
+padding:15px;
+}
+
+/* ----------- stylized ----------- */
+#stylized{
+background: rgba(255, 255, 255, 0.6);
+}
+#stylized h1 {
+font-size:14px;
+font-weight:bold;
+margin-bottom:8px;
+}
+#stylized p{
+font-size:11px;
+color:#666666;
+margin-bottom:20px;
+border-bottom:solid 1px #b7ddf2;
+padding-bottom:10px;
+}
+#stylized label{
+display:block;
+font-weight:bold;
+text-align:left;
+width:140px;
+float:left;
+}
+#stylized .small{
+color:#666666;
+display:block;
+font-size:11px;
+font-weight:normal;
+text-align:left;
+width:140px;
+}
+#stylized input{
+float:left;
+font-size:12px;
+padding:4px 2px;
+border:solid 1px #B8C4C6;
+width:300px;
+margin:2px 50px 10px 0px;
+}
+/*----------*/
+#home { 
+	background-image: url(/MISSExamBackOffice/resources/images/bg_home.png); background-repeat:repeat-x;  
+}
+#sub_page { 
+background-image: url(/MISSExamBackOffice/resources/images/bg_sub.png); 
+}
+#wrapperh { 
+	width: 960px; 
+	padding: 0 10px; 
+	margin: 0 auto; 
+}
+#t_top { 
+	height: 35px; 
+}
+#t_login { 
+	float: right; 
+	margin-top: 6px; 
+}#t_login form {
+	height: 22px;
+	margin: 0;
+	padding: 0;
+}
+
+#t_login .txt_field {
+	float: left;
+	display: block;
+	margin-left: 5px;
+	height: 22px;
+	width: 150px;
+	color: #c7c7c7;
+	font-size: 11px;
+	padding: 0 5px;
+	font-variant: normal;
+	line-height: normal;
+	background: url(/MISSExamBackOffice/resources/images/login_txt.png) no-repeat;
+	border: none;	
+	line-height: 22px;
+}
+#t_login .sub_btn {
+	float: left;
+	display: block;
+	margin-left: 5px;	
+ 	height: 22px;
+	width: 70px;
+	cursor: pointer;
+	font-size: 12px;
+	text-align: center;
+	vertical-align: bottom;
+	white-space: pre;
+	color: #c7c7c7;
+	border: none;
+	background: url(/MISSExamBackOffice/resources/images/login_btn.png)
+}
+#t_header {
+	width: 960px;
+	height: 70px;
+}#t_middle { 
+	clear: both;
+	position: relative;
+	width: 960px;
+	height: 360px;
+	padding: 30px 0;
+}#mid_title { 
+	font-size: 40px; 
+	font-weight: 400; 
+	line-height: 40px; 
+	color: #000; 
+	margin-bottom: 40px;  
+}
+#mid_title span { 
+	clear: both; 
+	display: block; 
+	color: #666; 
+	font-size: 30px; 
+}
+#mid_left { 
+	float:left; 
+	width: 430px; 
+}
+#mid_slider { 
+	float: right; 
+	width: 480px; 
+	height: 360px; 
+	padding-bottom: 22px; 
+	background: url(/MISSExamBackOffice/resources/images/slider_bg.png) bottom center no-repeat;  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

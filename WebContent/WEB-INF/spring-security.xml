@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/security 
+		http://www.springframework.org/schema/security/spring-security-3.1.xsd
+		http://www.springframework.org/schema/util 
+		http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+		
+	
+
+	<http pattern="/resources" security="none" />
+	<!-- <mvc:interceptors>         
+     <beans:bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="language"/>
+</mvc:interceptors> -->
+	
+    <!--    <beans:bean   class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">  
+            <beans:property name="paramName" value="language" />  
+        </beans:bean>   
+    <beans:bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<beans:property name="defaultLocale" value="en" />
+	</beans:bean> -->
+	 <!-- 
+	<beans:bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" >
+		<beans:property name="interceptors">
+			<beans:list>
+				<beans:ref bean="localeChangeInterceptor" />
+			</beans:list>
+		</beans:property>
+	</beans:bean> -->
+	<!--  <beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<beans:property name="basename" value="classpath:messages"/>
+	</beans:bean> 
+	 
+	  <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"><property name="basename" value="classpath:org/springframework/security/messages"/></bean> -->
+	<http auto-config="true"  use-expressions="true">
+		<intercept-url pattern="/login" access="permitAll"/>
+		<intercept-url pattern="/logout" access="permitAll"/>
+		<intercept-url pattern="/reportExport/**" access="permitAll"/>
+		<intercept-url pattern="/checksession/**" access="permitAll"/>  
+		
+		<intercept-url pattern="/denied" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/" access="hasRole('ROLE_USER')"/> 
+		<intercept-url pattern="/user" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')"/>
+	    <intercept-url pattern="/exam/**" access="isAuthenticated()" />
+	    
+	    <intercept-url pattern="/reportmanagement/**" access="isAuthenticated()" />	    
+	    <intercept-url pattern="/survey/**" access="isAuthenticated()" />
+	    <intercept-url pattern="/test/**" access="isAuthenticated()" />
+	    <intercept-url pattern="/upload/**" access="isAuthenticated()" />
+	    <intercept-url pattern="/getfile/**" access="isAuthenticated()" />
+	    <intercept-url pattern="/template/**" access="isAuthenticated()" />
+	    <intercept-url pattern="/sendmailToApprove/**" access="isAuthenticated()" />
+	    <intercept-url pattern="/getmailToApprove/**" access="isAuthenticated()" />
+	    <intercept-url pattern="/series/**" access="isAuthenticated()" />
+	    <intercept-url pattern="/role/**" access="isAuthenticated()" />
+	    <intercept-url pattern="/result/**" access="isAuthenticated()" />
+	    <intercept-url pattern="/paper/**" access="isAuthenticated()" />
+	    <intercept-url pattern="/manual/**" access="isAuthenticated()" />
+	    <intercept-url pattern="/miss/**" access="isAuthenticated()" />
+	    <intercept-url pattern="/company/**" access="isAuthenticated()" />
+	    <intercept-url pattern="/candidate/**" access="isAuthenticated()" />
+	    <intercept-url pattern="/reportUpload/**" access="isAuthenticated()" />
+	    
+	    
+		
+		<!-- <form-login login-page="/login" 
+			authentication-failure-url="/login/failure" 
+			default-target-url="/"/> -->
+			<!-- <form-login login-page="/login" 
+			authentication-failure-url="/login/failure" 
+			default-target-url="/checking"/>  -->
+			
+			<form-login login-page="/login" 
+			authentication-failure-url="/login/failure" 
+			authentication-failure-handler-ref="myAuthErrorHandler"
+			default-target-url="/checking"/>  
+			
+		<access-denied-handler error-page="/denied"/>
+		
+		 
+			
+		<logout invalidate-session="true" 
+			logout-success-url="/logout/success" 
+			logout-url="/logout"/>
+		 
+		 <session-management  session-authentication-error-url="/login/duplicate?error=alreadyLogin"  invalid-session-url="/login" >
+       		 <concurrency-control max-sessions="1"  error-if-maximum-exceeded="true"/>
+    	</session-management>
+	</http>
+	
+	<authentication-manager>
+	        <authentication-provider user-service-ref="customUserDetailsService">
+	        		<password-encoder hash="sha-256"/>
+	        </authentication-provider>
+	</authentication-manager>
+	
+	<!-- <authentication-manager>
+	        <authentication-provider user-service-ref="userService">
+	        		<password-encoder hash="sha-256"/>
+	        </authentication-provider>
+	</authentication-manager>
+	<jdbc-user-service id="userService" data-source-ref="jpaDataSource"
+    users-by-username-query="select u.username,u.password, u.enabled , contact.MCONTACT_NAME as firstName from user_contact u left join MISS_CONTACT contact on
+      u.username=contact.MCONTACT_USERNAME where username=? and type='1' "
+	authorities-by-username-query="select l.username, r.role from user_contact l, role_contact r where l.id = r.user_id and l.username =? " />
+     -->
+	
+	<!-- <authentication-provider user-service-ref="userService" />
+  -->
+  <!-- <jdbc-user-service id="userService" data-source-ref="jpaDataSource"
+    users-by-username-query="SELECT Login AS 'username', Password AS 'password', Enabled AS 'enabled' FROM User WHERE Login = ?" 
+    authorities-by-username-query="SELECT u.Login as 'username', ua.Authority as 'authority' FROM Authority ua, User u WHERE ua.id = u.authority_id AND u.Login = ?"
+  />  -->
+  
+</beans:beans>

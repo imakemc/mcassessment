@@ -1,0 +1,98 @@
+@charset "windows-874";
+/* CSS Document */
+.mainframe{
+	width:100%;
+	height:100%;
+	min-height:634px;
+	max-height:750px;
+	overflow:hidden;
+	background:url(../images/bg_nbtc.jpg);
+	background-position:top;
+	background-size:cover;
+	display:block;
+	position:absolute;
+
+}
+.insideframe{
+	width:1002px;
+	height:634px;
+	margin:auto;
+}
+.leftpic{
+	width:455px;
+	height:634px;
+	background:url(../images/leftpic.jpg) no-repeat;
+	float:left;
+}
+.rightpic{
+	width:547px;
+	height:634px;
+	float:right;
+	background:url(../images/rightpic.jpg) no-repeat;
+}
+.datalogin{
+	width:419px;
+	height:280px;
+	margin-top:280px;
+	margin-left:128px;
+	list-style:none;
+	line-height:37px;
+}
+.datalogin1{
+	height:35px;
+}
+.datalogin2{
+	height:35px;
+	padding-top:10px;
+}
+.loginbox{
+	font-family:Arial, Helvetica, sans-serif;
+	color:#333;
+	font-size:16px;
+	width:219px;
+	height:38px;
+	background:url(../images/loginbox.png) no-repeat;
+	line-height:35px;
+	border:none;
+	padding-left:10px;
+}
+.adminbtn{
+	width:300px;
+	height:280px;
+	margin-top:13px;
+	margin-left:450px;
+	float:left;
+}
+.co1{
+	background:url(../images/co1.png) no-repeat;
+	width:1002px;
+	height:400px;
+	float:left;
+}
+.co2{
+	background:url(../images/co2.png) no-repeat;
+	width:1002px;
+	height:106px;
+	float:left;
+}
+.co3{
+	background:url(../images/co3.png) no-repeat;
+	width:1002px;
+	height:152px;
+	float:left;
+}
+.co5{
+	background:url(../images/co5.png) no-repeat;
+	width:1002px;
+	height:260px;
+	float:left;
+}
+.datalogin_corporate{
+	width:419px;
+	height:280px;
+	margin-top:7px;
+	margin-left:383px;
+	list-style:none;
+	line-height:16px;
+}
+

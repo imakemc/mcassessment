@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* CSS Document */
+#header #navigation-login-register {
+    background: url("../../resources/images/nav_bg.gif") repeat-x scroll 0 0 transparent;
+    height: 45px;
+    padding-left: 0px;
+}
+#header .navigation {    
+    float: right; margin-right:10px;
+}
+#header ul {
+    font-weight: bold;background: url("../../resources/images/nav_link_bg.gif") repeat scroll 0 0 transparent;
+    line-height: 1;
+}
+#header .navigation li {
+    font-size: 13px;
+    height: 13px;
+    padding: 12px 0 11px;
+}
+#header li {
+    float: left;
+    list-style-type: none;
+    position: relative;
+}
+#header .navigation li {
+    font-size: 12px;font-family: Tahoma, Geneva, sans-serif;
+    height: 12px;
+    padding: 12px 0 11px;
+}
+#header .navigation .first {
+    background: url("../../resources/images/nav_left.gif") no-repeat scroll left bottom transparent;
+}
+#header .navigation .last {
+    background: url("../../resources/images/nav_right.gif") no-repeat scroll right bottom transparent;
+    border: 0 none;
+}
+#header .navigation .last a {
+    border: 0 none;
+}
+#header .navigation a {
+    border-right: 1px solid #5F665F;
+    color: white;
+    padding: 0 0.6em;
+    text-decoration: none !important;
+}
+#header .navigation a:hover {
+    text-decoration: underline !important;
+}
+
