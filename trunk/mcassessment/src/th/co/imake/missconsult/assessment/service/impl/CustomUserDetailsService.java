@@ -6,12 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,22 +49,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 	 */
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		logger.debug(" xxxxxxxxxxxxxxxxxxxxxxxxxxxx into loadUserByUsername "+username);
-		try {
-		
-			 /*  CriteriaBuilder cb = em.getCriteriaBuilder();
-		        CriteriaQuery<th.co.aoe.makedev.missconsult.exam.domain.User> query = cb.createQuery(th.co.aoe.makedev.missconsult.exam.domain.User.class);
-		       Root<th.co.aoe.makedev.missconsult.exam.domain.User> account = query.from(th.co.aoe.makedev.missconsult.exam.domain.User.class);
-
-		        query.where(cb.equal(account.get("username").as(String.class),
-		        		username));
-		        th.co.aoe.makedev.missconsult.exam.domain.User domainUser =null;
-		       List<th.co.aoe.makedev.missconsult.exam.domain.User> domainUsers= em.createQuery(query).getResultList();
-		       if(domainUsers!=null && domainUsers.size()>0)
-		    	   domainUser=domainUsers.get(0);*/
-	       // logger.debug(" xxxxxxxxxxxxxxxxxxxxxxxxxxxx affter uniqueResult "+domainUser);
-	     
-	        
-	        th.co.imake.missconsult.assessment.domain.UserContact domainUserContact = userRepository.findByUsername(username);
+		try {	        
+	        th.co.imake.missconsult.assessment.domain.User domainUserContact = userRepository.findByUsername(username);
 			logger.debug(" xxxxxxxxxxxxxxxxxxxxxxxxxxxx affter loadUserByUsername "+domainUserContact);
 			
 			boolean enabled = true;
@@ -88,13 +70,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 			  boolean isAdmin=false;
 			  Long rcId=null;
 		if(domainUserContact!=null){
-			//logger.debug("  getMcontactName "+domainUser.getMissContact().getMcontactName());
+		 /*
 			EntityManager em = entityManagerFactory.createEntityManager();
-	       /* try {
-	              entityManager.createQuery("from TestEntity").getResultList();
-	        } finally {
-	            entityManager.close();
-	        }*/
+	       
             try{
             	org.hibernate.ejb.TransactionImpl tx=(org.hibernate.ejb.TransactionImpl)em.getTransaction();
             	tx.begin();
@@ -122,7 +100,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 				em.close();
 			} 
           
-         
+         */
 			MyUserDetails user=new MyUserDetails(domainUserContact.getUsername(),  
 					domainUserContact.getPassword().toLowerCase(),
 					enabled,
@@ -132,7 +110,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 					//getAuthorities(domainUser.getRole().getRole()));
 					//getAuthorities(domainUserContact.getRole()));
 					getAuthorities(getRolesMapping(rcId,isAdmin)));
-			MyUser myUser=new MyUser(domainUserContact.getFirstName()+" "+domainUserContact.getLastName());
+			MyUser myUser=new MyUser(domainUserContact.getFirstname()+" "+domainUserContact.getLastname());
 			th.co.aoe.makedev.missconsult.xstream.MissContact missContact= missExamService.findMissContactByUsername(domainUserContact.getUsername());
 			myUser.setMissContact(missContact);
 			user.setMyUser(myUser);
