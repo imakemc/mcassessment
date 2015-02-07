@@ -4,9 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
@@ -16,38 +15,53 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="role_type")
+@NamedQuery(name="RoleType.findAll", query="SELECT r FROM RoleType r")
 public class RoleType implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="rt_id")
-	private Long rtId;
+	private Integer rtId;
+
+	private Integer order;
 
 	private String role;
 
 	@Column(name="role_desc")
 	private String roleDesc;
-	
-	@Column(name="type")
+
 	private String type;
-	
-	@Column(name="order")
-	private int order;
+    /*
+	//bi-directional many-to-many association to Role
+	@ManyToMany
+	@JoinTable(
+		name="role_type_mappling"
+		, joinColumns={
+			@JoinColumn(name="rt_id")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="role_id")
+			}
+		)
+	private List<Role> roles;
+    */
+	public RoleType() {
+	}
 
-	/*//bi-directional many-to-many association to RoleContact
-	@ManyToMany(mappedBy="roleTypes")
-	private Set<RoleContact> roleContacts;*/
-
-    public RoleType() {
-    }
-
-	public Long getRtId() {
+	public Integer getRtId() {
 		return this.rtId;
 	}
 
-	public void setRtId(Long rtId) {
+	public void setRtId(Integer rtId) {
 		this.rtId = rtId;
+	}
+
+	public Integer getOrder() {
+		return this.order;
+	}
+
+	public void setOrder(Integer order) {
+		this.order = order;
 	}
 
 	public String getRole() {
@@ -67,27 +81,13 @@ public class RoleType implements Serializable {
 	}
 
 	public String getType() {
-		return type;
+		return this.type;
 	}
 
 	public void setType(String type) {
 		this.type = type;
 	}
 
-	public int getOrder() {
-		return order;
-	}
 
-	public void setOrder(int order) {
-		this.order = order;
-	}
 
-	/*public Set<RoleContact> getRoleContacts() {
-		return this.roleContacts;
-	}
-
-	public void setRoleContacts(Set<RoleContact> roleContacts) {
-		this.roleContacts = roleContacts;
-	}*/
-	
 }
