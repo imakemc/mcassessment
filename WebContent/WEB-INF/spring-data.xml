@@ -40,7 +40,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/MC_ASSESSMENT_DB" />
 		<property name="username" value="root" />
-		<property name="password" value="015482543a6e" />
+		<property name="password" value="xx" />
 	</bean>
 	 -->
 	<jee:jndi-lookup id="jpaDataSource" resource-ref="true"
