@@ -12,11 +12,6 @@
 			<bean class="th.co.imake.missconsult.assessment.web.MissConsultBindingInitializer"/>
 		</property>
 	</bean> 
-	<!-- <mvc:interceptors>  
-        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">  
-            <property name="paramName" value="language" />  
-        </bean>  
-    </mvc:interceptors>  -->
      	  <bean id="localeChangeInterceptor"
 			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 			<property name="paramName" value="language" />
@@ -34,22 +29,6 @@
 			</list>
 		</property>
 	</bean>  
-
-<!-- <mvc:interceptors>
-<bean id="localeChangeInterceptor"
-class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-</bean>
-</mvc:interceptors>
-
-<bean id="localeResolver"
-    class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
-    <property name="defaultLocale" value="en"/>
-</bean>
-
-<bean id="handlerMapping"
-    class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
-</bean> -->
-
 	
         <!--   <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="messages"/> -->
         <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">

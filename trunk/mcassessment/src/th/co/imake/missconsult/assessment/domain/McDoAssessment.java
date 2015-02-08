@@ -28,7 +28,7 @@ public class McDoAssessment implements Serializable {
 
 	//bi-directional many-to-one association to McCustomerAssessment
 	@ManyToOne
-	@JoinColumn(name="MCUST_ASSESSMENT_ID")
+	@JoinColumn(name="MCUST_ASSESSMENT_ID",insertable=false,updatable=false)
 	private McCustomerAssessment mcCustomerAssessment;
 
 	public McDoAssessment() {

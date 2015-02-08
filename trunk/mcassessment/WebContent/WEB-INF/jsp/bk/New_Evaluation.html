@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ID=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="WEB-INF/css/bootstrap.min.css" rel="stylesheet">
+<link href="WEB-INF/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="WEB-INF/material/css/ripples.min.css" rel="stylesheet">
+<link href="WEB-INF/material/css/material-wfont.min.css" rel="stylesheet">
+<link href="WEB-INF/summernote/dist/summernote.css" rel="stylesheet">
+<title>Evaluation</title>
+</head>
+<body>
+	<div style="min-height: 645px;">
+		<header>
+			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+				<div class="container-fluid" style="margin-top: 20px;">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-collapse">
+							<span class="sr-only">order</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a href="#" class="navbar-brand logo" style="font-family:verdana;font-size: 35px;">MissConsult</a>
+					</div>
+					<div>
+						<div class="collapse navbar-collapse" id="mynavbar-collapse">
+							<ul class="nav navbar-nav navbar-right">
+								<li class="active"><a href="file:///root/Desktop/mcs/WebContent/Order.html#">Order</a></li>
+								<li><a href="file:///root/Desktop/mcs/WebContent/index.html#">Customer</a></li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Setting<span class="caret"></span></a>
+									<ul class="dropdown-menu navbar-inverse" role="menu">
+										<li><a href="file:///root/Desktop/mcs/WebContent/Series.html#" style="color: #fff;">Series</a></li>
+										<li class="divider"></li>
+										<li><a href="file:///root/Desktop/mcs/WebContent/Evaluation.html#" style="color: #fff;">Evaluation</a></li>
+										<li class="divider"></li>
+										<li><a href="file:///root/Desktop/mcs/WebContent/Degree_Group.html#" style="color: #fff;">Degree Group</a></li>
+										<li class="divider"></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<div class="container" style="background-color:#fff; box-shadow: 0px 5px 10px #3e4545; margin-bottom: 20px;">
+			<div class="row">
+	  			<div class="col-md-8 col-md-offset-2" style=" background: #ffffff; margin-top: 30px; min-height: 400px;">
+					<ul class="nav nav-pills">
+					  <li class="active">
+					    <a href="#info" data-toggle="tab">Information</a>
+					  </li>
+					  <li><a href="#assess" data-toggle="tab">Question</a></li>
+					</ul>
+					<div class="tab-content">
+   						<div id="info" class="tab-pane active">
+			            	<form class="form-horizontal" style="border: 1px solid #046ac9; padding: 20px;">
+							    <fieldset><br>
+							        <div class="form-group">
+							            <label class="col-lg-3 control-label">Evaluation Name :</label>
+							            <div class="col-lg-8">
+							                <input class="form-control" placeholder="Evaluation Name">
+							            </div>
+							        </div>
+							        <div class="form-group">
+							            <label for="inputPassword" class="col-lg-3 control-label">Introduction :</label>
+							            <div class="col-lg-8">
+							                <textarea class="form-control" placeholder="Introduction"></textarea>
+						            	</div>
+					            	</div>
+					            	<div class="form-group">
+							            <div class="col-lg-10 col-lg-offset-5">
+							                <button type="submit" class="btn btn-material-blue-700">Submit</button>
+							            </div>
+							        </div>
+				            	</fieldset>
+			            	</form>
+   						</div>
+   						<div id="assess" class="tab-pane">
+   							<form class="form-horizontal" style="border: 1px solid #046ac9; padding-left: 20px; padding-right:20px; padding-top:20px; margin-bottom: 30px;">
+     				            <button type="button" class="btn btn-info" style="margin-bottom: 5px;" data-toggle="modal" data-target="#question-popup"><span class="glyphicon glyphicon-plus"></span> Add </button>
+			            		<div class="table-responsive">	
+					     			<table class="table tb table-hover" style="margin-bottom: 15px;">
+						     			<tbody>
+						     				<tr>
+							     				<td class="col-md-2">ID</td>
+							     				<td class="col-md-7">Question</td>
+							     				<td class="col-md-3"></td>
+							     			</tr>
+							     			<tr>
+							     				<td class="col-md-2" style="vertical-align: middle;">00001</td>
+							     				<td class="col-md-7" style="vertical-align: middle;">Question th 1</td>
+							     				<td class="col-md-3" style="text-align: center;">
+						     						<button class="btn btn-success btn-flat btn" data-toggle="modal" data-target="#question-popup"><i class="glyphicon glyphicon-edit"></i></button>
+	<!-- --------------------------------------question-popup--------------------------------------------------- -->
+														<div id="question-popup" class="modal fade" tabindex="-1">
+														  <div class="modal-dialog">
+														    <div class="modal-content">
+														      <div class="modal-header">
+														        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+														        <h4 class="modal-title">Question 1</h4>
+														      </div>
+														      <div class="modal-body">
+													        	<fieldset>
+														        	<div class="form-group">
+														        		<label class="col-lg-2 control-label">Thai :</label>
+														        		<div class="sample col-lg-10">
+																		  <div class="summernote"></div>
+																		 </div>
+																		</div>
+													            	<div class="form-group">
+															            <label class="col-lg-2 control-label">English :</label>
+																		 <div class="col-lg-10">
+															                <div class="summernote"></div>
+															            </div>
+															        </div>
+															        <div class="form-group">
+															            <label class="col-lg-2 control-label">Choices :</label>
+																		 <div class="col-lg-4">
+															                <div class="table-responsive">	
+																     			<table class="table tb table-hover">
+																	     			<tbody>
+																	     				<tr>
+																		     				<td class="col-md-2">Order</td>
+																		     				<td class="col-md-2">Score</td>
+																		     			</tr>
+																		     			<tr>
+																		     				<td class="col-md-2">[ ] 1</td>
+																		     				<td class="col-md-2">0</td>
+																		     			</tr>
+																		     			<tr>
+																		     				<td class="col-md-2">[ ] 2</td>
+																		     				<td class="col-md-2">1</td>
+																		     			</tr>
+																		     			<tr>
+																		     				<td class="col-md-2">[ ] 3</td>
+																		     				<td class="col-md-2">2</td>
+																		     			</tr>
+																		     			<tr>
+																		     				<td class="col-md-2">[ ] 4</td>
+																		     				<td class="col-md-2">3</td>
+																		     			</tr>
+																	     			</tbody>
+																     			</table>
+															     			</div>
+															     			<button class="btn btn-material-blue-700 btn-flat btn-xs"><i class="glyphicon glyphicon-plus"></i></button>
+															     			<button class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#delete-popup"><i class="glyphicon glyphicon-trash"></i></button>
+															            </div>
+															        </div>
+													        	</fieldset>
+														      </div>
+														      <div class="modal-footer">
+														      	<a href="file:///root/Desktop/mcs/WebContent/Evaluation.html#">
+														        	<button type="button" class="btn btn-default" data-tooltip="Back" style="float: left;"><span class="glyphicon glyphicon-arrow-left"></span></button>
+													        	</a>
+														        <button class="btn btn-material-blue-700" data-dismiss="modal">Submit</button>
+														      </div>
+														    </div>
+														  </div>
+														</div>
+	<!-- ----------------------------------------------------------------------------------------------- -->
+												  	<button class="btn btn-danger btn-flat btn" data-toggle="modal" data-target="#delete-popup"><i class="glyphicon glyphicon-trash"></i></button>
+							     				</td>
+						     				</tr>
+						     				<tr>
+							     				<td class="col-md-2" style="vertical-align: middle;"></td>
+							     				<td class="col-md-7" style="vertical-align: middle;">Question eng 2</td>
+							     				<td class="col-md-3" style="text-align: center;">
+						     						<button class="btn btn-success btn-flat btn" data-toggle="modal" data-target="#question-popup"><i class="glyphicon glyphicon-edit"></i> </button>
+												  	<button class="btn btn-danger btn-flat btn" data-toggle="modal" data-target="#delete-popup"><i class="glyphicon glyphicon-trash"></i> </button>
+							     				</td>
+						     				</tr>
+						     				<tr>
+							     				<td class="col-md-2" style="vertical-align: middle;">00002</td>
+							     				<td class="col-md-7" style="vertical-align: middle;">Question th 1</td>
+							     				<td class="col-md-3" style="text-align: center;">
+						     						<button class="btn btn-success btn-flat btn" data-toggle="modal" data-target="#question-popup"><i class="glyphicon glyphicon-edit"></i> </button>
+												  	<button class="btn btn-danger btn-flat btn" data-toggle="modal" data-target="#delete-popup"><i class="glyphicon glyphicon-trash"></i> </button>
+							     				</td>
+						     				</tr>
+						     				<tr>
+							     				<td class="col-md-2" style="vertical-align: middle;"></td>
+							     				<td class="col-md-7" style="vertical-align: middle;">Question eng 2</td>
+							     				<td class="col-md-3" style="text-align: center;">
+						     						<button class="btn btn-success btn-flat btn" data-toggle="modal" data-target="#question-popup"><i class="glyphicon glyphicon-edit"></i> </button>
+												  	<button class="btn btn-danger btn-flat btn" data-toggle="modal" data-target="#delete-popup"><i class="glyphicon glyphicon-trash"></i> </button>
+							     				</td>
+						     				</tr>
+						     				<tr>
+							     				<td class="col-md-2" style="vertical-align: middle;"></td>
+							     				<td class="col-md-7" style="vertical-align: middle;"></td>
+							     				<td class="col-md-3" style="text-align: center;">
+						     						<button class="btn btn-success btn-flat btn" data-toggle="modal" data-target="#question-popup"><i class="glyphicon glyphicon-edit"></i> </button>
+												  	<button class="btn btn-danger btn-flat btn" data-toggle="modal" data-target="#delete-popup"><i class="glyphicon glyphicon-trash"></i> </button>
+							     				</td>
+						     				</tr>
+					     				</tbody>
+					     			</table>
+								</div>
+								<ul class="pagination pagination-sm" style="float: right;">
+								    <li class="disabled"><a href="javascript:void(0)">«</a></li>
+								    <li class="active"><a href="javascript:void(0)">1</a></li>
+								    <li><a href="javascript:void(0)">2</a></li>
+								    <li><a href="javascript:void(0)">3</a></li>
+								    <li><a href="javascript:void(0)">4</a></li>
+								    <li><a href="javascript:void(0)">5</a></li>
+								    <li><a href="javascript:void(0)">»</a></li>
+								</ul>
+							</form>
+   						</div>
+					</div>
+				</div>
+     		</div>
+		</div>
+ 	</div>
+<!-- ----------------------------------delete-popup------------------------------------------------------------- -->
+<div id="delete-popup" class="modal fade" tabindex="-1">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+      	<form class="form-horizontal">
+			<fieldset>
+	          	<div class="form-group">
+		            <label class="col-lg-10 col-md-offset-1 control-label" style="text-align: center; font-size: 18px;">Are you sure?</label>
+	        	</div>
+	      	</fieldset>
+	      </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-material-blue-700 btn-xs" data-dismiss="modal">Yes</button>
+        <button class="btn btn-material-grey-100 btn-xs" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- --------------------------------------------------------------------------- -->
+<script src="WEB-INF/js/jquery.min.js"></script>
+<script src="WEB-INF/js/bootstrap.min.js"></script>
+<script src="WEB-INF/material/js/ripples.min.js"></script>
+<script src="WEB-INF/material/js/material.min.js"></script>
+<script src="WEB-INF/summernote/dist/summernote.min.js"></script>
+
+<script type="text/javascript">
+    ...
+    document.getElementById("info").setAttribute("class","active")
+</script>
+<script>
+    $(document).ready(function() {
+        $.material.init();
+    });
+</script>
+<script>
+	$(document).ready(function() {
+		  $('.summernote').summernote();
+		});
+	$('.summernote').summernote({
+		  height: 150,                 // set editor height
+
+		  minHeight: null,             // set minimum height of editor
+		  maxHeight: null,             // set maximum height of editor
+
+		  focus: true,                 // set focus to editable area after initializing summernote
+		});
+</script>
+<script type="text/javascript">  
+$(function(){  
+    $("ul#navi_containTab > li").click(function(event){  
+            var menuIndex=$(this).index();  
+            $("ul#detail_containTab > li:visible").hide();             
+            $("ul#detail_containTab > li").eq(menuIndex).show();  
+    });  
+});  
+</script>  
+<style>
+body { 
+	margin-top: 100px; 
+	}
+ .btn {
+    padding-left: 14px;
+    padding-right: 14px;
+    margin: 0px;
+  }
+div#i_containTab{  
+    position:relative;  
+    display:block;
+    border:1px solid #ffffff;  
+}  
+ul#navi_containTab{  
+    list-style:none;  
+    padding:0;  
+    margin:0;     
+    width:100%;  
+    background-color:#ffffff;  
+}  
+ul#navi_containTab li{  
+    display:block;  
+    float:left;   
+    border:0px solid #ccc;  
+    line-height:25px;  
+    cursor:pointer;  
+    text-align:center;  
+	padding: 10px;
+    color: #ffffff;
+}  
+/* class รูปแบบของแต่ละเมนู */  
+.tabNavi1{  
+    background-color:#046ac9;    
+}  
+.tabNavi2{  
+    background-color:#0475e5;        
+}
+ul#detail_containTab{  
+    list-style:none;  
+    padding:0;  
+    margin:0;     
+    width:100%;   
+}  
+ul#detail_containTab li{  
+    float:left;   
+    min-height: 250px; 
+    max-height: 400px;
+    padding-top: 10px;
+}  
+/* class รูปแบบของแต่ละเนื้อหา */  
+.detailContent1{  
+    background-color:#ffffff;    
+    display:block;  
+    border: 1px solid #0475e5;
+}  
+.detailContent2{  
+    background-color:#ffffff;       
+    display:none;  
+    border: 1px solid #0475e5;
+} 
+
+.tb {
+	margin:0px;padding:0px;
+	width:100%;
+	border:1px solid #0475e5;
+}.tb table{
+    border-collapse: collapse;
+    border-spacing: 0;
+	width:100%;
+	height:100%;
+	margin:0px;
+	padding:0px;
+}.tb tr:hover td{
+	
+}
+.tb tr:nth-child(odd){ background-color:#fcfcfc; }
+.tb tr:nth-child(even){ background-color:#ffffff; }.tb td{
+	vertical-align:middle;
+	border:1px solid #0475e5;
+	border-width:0px 1px 1px 0px;
+	padding:7px;
+	font-weight:normal;
+	color:#000000;
+}.tb tr:last-child td{
+	border-width:0px 1px 0px 0px;
+}.tb tr td:last-child{
+	border-width:0px 0px 1px 0px;
+}.tb tr:last-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+.tb tr:first-child td{
+	background:-o-linear-gradient(bottom, #0475e5 5%, #046dd6 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #0475e5), color-stop(1, #046dd6) );
+	background:-moz-linear-gradient( center top, #0475e5 5%, #046dd6 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#0475e5", endColorstr="#046dd6");	background: -o-linear-gradient(top,#0475e5,046dd6);
+
+	background-color:#0475e5;
+	border:0px solid #0475e5;
+	text-align:center;
+	border-width:0px 0px 1px 1px;
+	font-weight:bold;
+	color:#ffffff;
+}
+.tb tr:first-child:hover td{
+	background:-o-linear-gradient(bottom, #0475e5 5%, #046dd6 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #0475e5), color-stop(1, #046dd6) );
+	background:-moz-linear-gradient( center top, #0475e5 5%, #046dd6 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#0475e5", endColorstr="#046dd6");	background: -o-linear-gradient(top,#0475e5,046dd6);
+
+	background-color:#0475e5;
+}
+.tb tr:first-child td:first-child{
+	border-width:0px 0px 1px 0px;
+}
+.tb tr:first-child td:last-child{
+	border-width:0px 0px 1px 1px;
+}
+  #dropdown-menu h2 {
+    padding: 14px;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  #dropdown-menu .sample {
+    width: 200px;
+  }
+  #dropdown-menu .form-group {
+    margin: 30px 0;
+  }
+  
+  [data-tooltip] {
+	position: relative;
+	z-index: 2;
+	cursor: pointer;
+}
+
+[data-tooltip]:before,
+[data-tooltip]:after {
+  visibility: hidden;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+	opacity: 0;
+	pointer-events: none;
+}
+
+[data-tooltip]:before {
+	position: absolute;
+	bottom:170%;
+	left: 50%;
+	margin-bottom: -20px;
+	margin-left: -50px;
+	padding: 5px;
+	width: 100px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius:    3px;
+	border-radius:         3px;
+	background-color: #000;
+	background-color: hsla(0, 0%, 20%, 0.9);
+	color: #fff;
+	content: attr(data-tooltip);
+	text-align: center;
+	font-size: 10px;
+	line-height: 1.2;
+}
+
+[data-tooltip]:after {
+	position: absolute;
+	bottom: 105%;
+	left: 50%;
+	margin-left: -5px;
+	width: 0;
+	border-top: 5px solid #000;
+	border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+	border-right: 5px solid transparent;
+	border-left: 5px solid transparent;
+	content: " ";
+	font-size: 0;
+	line-height: 0;
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+	visibility: visible;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+	opacity: 1;
+}
+</style>
+</body>
+</html>

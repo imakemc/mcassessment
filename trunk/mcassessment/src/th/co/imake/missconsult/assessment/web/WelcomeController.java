@@ -63,7 +63,7 @@ import th.co.aoe.makedev.missconsult.xstream.MissContact;
 import th.co.aoe.makedev.missconsult.xstream.MissSeriesAttach;
 import th.co.aoe.makedev.missconsult.xstream.MissTestResult;
 import th.co.aoe.makedev.missconsult.xstream.MissTodo;
-import th.co.aoe.makedev.missconsult.xstream.common.Pagging;
+import th.co.aoe.makedev.missconsult.xstream.common.Paging;
 import th.co.aoe.makedev.missconsult.xstream.common.VResultMessage;
 import th.co.imake.missconsult.assessment.mail.MailRunnableAttach;
 import th.co.imake.missconsult.assessment.service.MissExamService;
@@ -113,11 +113,11 @@ public class WelcomeController
         int pageNo = 1;
         if(pageNoStr != null && pageNoStr.length()!=0)
             pageNo = Integer.parseInt(pageNoStr);
-        Pagging page = new Pagging();
+        Paging page = new Paging();
         page.setPageNo(pageNo);
         page.setPageSize(PAGE_SIZE);
         MissTodo missTodo = new MissTodo();
-        missTodo.setPagging(page);
+        missTodo.setPaging(page);
         if(model.containsAttribute("UserMissContact")){
         	MissContact missContact= (MissContact)model.asMap().get("UserMissContact");
         	if(missContact.getIsMC()!=null && missContact.getIsMC().equals("0")){
@@ -148,11 +148,11 @@ public class WelcomeController
         int pageNo = 1;
         if(pageNoStr != null && pageNoStr.length()!=0)
             pageNo = Integer.parseInt(pageNoStr);
-        Pagging page = new Pagging();
+        Paging page = new Paging();
         page.setPageNo(pageNo);
         page.setPageSize(PAGE_SIZE);
         missTodo = new MissTodo();
-        missTodo.setPagging(page);
+        missTodo.setPaging(page);
         if(model.containsAttribute("UserMissContact")){
         	MissContact missContact= (MissContact)model.asMap().get("UserMissContact");
         	if(missContact.getIsMC()!=null && missContact.getIsMC().equals("0")){
@@ -176,11 +176,11 @@ public class WelcomeController
     		, @PathVariable int pageNo,Model model)
     {
     	 
-    	   Pagging page = new Pagging();
+    	   Paging page = new Paging();
     	   MissTodo misstodo =new MissTodo();
     	   page.setPageSize(PAGE_SIZE);
     	   page.setPageNo(pageNo);
-    	   misstodo.setPagging(page);
+    	   misstodo.setPaging(page);
          
      
     	   VResultMessage vresult = missExamService.searchMissTodo(misstodo);    
@@ -218,7 +218,7 @@ public class WelcomeController
     	//locale.getDisplayLanguage()
         int pageNo = 1;
        // DateTime dt = new DateTime();
-        Pagging page = new Pagging();
+        Paging page = new Paging();
         page.setPageNo(pageNo);
        
         page.setPageSize(PAGE_SIZE);
@@ -230,7 +230,7 @@ public class WelcomeController
    		 missTodo.setMissAccount(missAccount);
    		 //candidateForm.getMissCandidate().setMissAccount(missAccount);
      	}
-        missTodo.setPagging(page);
+        missTodo.setPaging(page);
         VResultMessage vresult = missExamService.searchMissTodo(missTodo);    
         model.addAttribute("todolists", vresult.getResultListObj());
         model.addAttribute("totals", vresult.getMaxRow());
@@ -356,13 +356,13 @@ public class WelcomeController
     	}
     	  int pageNo = 1;
          
-          Pagging page = new Pagging();
+          Paging page = new Paging();
           page.setPageNo(pageNo);
           page.setPageSize(PAGE_SIZE);
           missTodo.setMtodoId(null);
           missTodo.setMtodoResponse(null);
          // MissTodo missTodo = new MissTodo();
-          missTodo.setPagging(page);
+          missTodo.setPaging(page);
           if(model.containsAttribute("UserMissContact")){
           	MissContact missContact= (MissContact)model.asMap().get("UserMissContact");
           	if(missContact.getIsMC()!=null && missContact.getIsMC().equals("0")){

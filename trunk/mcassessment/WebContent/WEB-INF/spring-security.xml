@@ -11,28 +11,7 @@
 		http://www.springframework.org/schema/util 
 		http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 		
-	
-
 	<http pattern="/resources" security="none" />
-	<!-- <mvc:interceptors>         
-     <beans:bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="language"/>
-</mvc:interceptors> -->
-	
-    <!--    <beans:bean   class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">  
-            <beans:property name="paramName" value="language" />  
-        </beans:bean>   
-    <beans:bean id="localeResolver"
-		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-		<beans:property name="defaultLocale" value="en" />
-	</beans:bean> -->
-	 <!-- 
-	<beans:bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" >
-		<beans:property name="interceptors">
-			<beans:list>
-				<beans:ref bean="localeChangeInterceptor" />
-			</beans:list>
-		</beans:property>
-	</beans:bean> -->
 	<!--  <beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<beans:property name="basename" value="classpath:messages"/>
 	</beans:bean> 
@@ -43,6 +22,7 @@
 		<intercept-url pattern="/logout" access="permitAll"/>
 		<intercept-url pattern="/reportExport/**" access="permitAll"/>
 		<intercept-url pattern="/checksession/**" access="permitAll"/>  
+		<intercept-url pattern="/mcassessment/**" access="permitAll"/>  
 		
 		<intercept-url pattern="/denied" access="hasRole('ROLE_USER')"/>
 		<intercept-url pattern="/" access="hasRole('ROLE_USER')"/> 
@@ -68,15 +48,6 @@
 	    <intercept-url pattern="/candidate/**" access="isAuthenticated()" />
 	    <intercept-url pattern="/reportUpload/**" access="isAuthenticated()" />
 	    
-	    
-		
-		<!-- <form-login login-page="/login" 
-			authentication-failure-url="/login/failure" 
-			default-target-url="/"/> -->
-			<!-- <form-login login-page="/login" 
-			authentication-failure-url="/login/failure" 
-			default-target-url="/checking"/>  -->
-			
 			<form-login login-page="/login" 
 			authentication-failure-url="/login/failure" 
 			authentication-failure-handler-ref="myAuthErrorHandler"
@@ -100,23 +71,4 @@
 	        		<password-encoder hash="sha-256"/>
 	        </authentication-provider>
 	</authentication-manager>
-	
-	<!-- <authentication-manager>
-	        <authentication-provider user-service-ref="userService">
-	        		<password-encoder hash="sha-256"/>
-	        </authentication-provider>
-	</authentication-manager>
-	<jdbc-user-service id="userService" data-source-ref="jpaDataSource"
-    users-by-username-query="select u.username,u.password, u.enabled , contact.MCONTACT_NAME as firstName from user_contact u left join MISS_CONTACT contact on
-      u.username=contact.MCONTACT_USERNAME where username=? and type='1' "
-	authorities-by-username-query="select l.username, r.role from user_contact l, role_contact r where l.id = r.user_id and l.username =? " />
-     -->
-	
-	<!-- <authentication-provider user-service-ref="userService" />
-  -->
-  <!-- <jdbc-user-service id="userService" data-source-ref="jpaDataSource"
-    users-by-username-query="SELECT Login AS 'username', Password AS 'password', Enabled AS 'enabled' FROM User WHERE Login = ?" 
-    authorities-by-username-query="SELECT u.Login as 'username', ua.Authority as 'authority' FROM Authority ua, User u WHERE ua.id = u.authority_id AND u.Login = ?"
-  />  -->
-  
 </beans:beans>

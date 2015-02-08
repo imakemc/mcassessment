@@ -7,6 +7,8 @@ package th.co.imake.missconsult.assessment.service.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import th.co.aoe.makedev.missconsult.constant.ServiceConstant;
 import th.co.aoe.makedev.missconsult.xstream.ConsultantReport;
 import th.co.aoe.makedev.missconsult.xstream.CustomerReport;
@@ -58,7 +60,7 @@ import th.co.imake.missconsult.assessment.service.MissExamService;
 
 // Referenced classes of package th.co.aoe.makedev.missconsult.exam.service.impl:
 //            PostCommon
-
+@Service("missExamService")
 public class MissExamServiceImpl extends PostCommon
     implements MissExamService
 {
