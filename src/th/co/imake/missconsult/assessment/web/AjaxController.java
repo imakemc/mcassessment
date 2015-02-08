@@ -22,7 +22,7 @@ import th.co.aoe.makedev.missconsult.xstream.MissQuestion;
 import th.co.aoe.makedev.missconsult.xstream.MissReportAttach;
 import th.co.aoe.makedev.missconsult.xstream.MissSeriesAttach;
 import th.co.aoe.makedev.missconsult.xstream.MissTodo;
-import th.co.aoe.makedev.missconsult.xstream.common.Pagging;
+import th.co.aoe.makedev.missconsult.xstream.common.Paging;
 import th.co.aoe.makedev.missconsult.xstream.common.VResultMessage;
 import th.co.imake.missconsult.assessment.service.MissExamService;
 
@@ -42,11 +42,11 @@ public class AjaxController
     public String getToDoList(Model model)
     {
         int pageNo = 1;
-        Pagging page = new Pagging();
+        Paging page = new Paging();
         page.setPageNo(pageNo);
         page.setPageSize(20);
         MissTodo missTodo = new MissTodo();
-        missTodo.setPagging(page);
+        missTodo.setPaging(page);
         VResultMessage vresult = missExamService.searchMissTodo(missTodo);
         model.addAttribute("todolists", vresult.getResultListObj());
         model.addAttribute("totals", vresult.getMaxRow());

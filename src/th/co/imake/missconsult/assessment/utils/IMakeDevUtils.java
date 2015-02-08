@@ -17,4 +17,5 @@ public class IMakeDevUtils
     {
         return total % perPage != 0 ? total / perPage + 1 : total / perPage;
     }
+    public static int PAGE_SIZE=20;
 }

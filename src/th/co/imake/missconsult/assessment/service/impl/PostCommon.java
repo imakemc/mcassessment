@@ -12,7 +12,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import th.co.aoe.makedev.missconsult.xstream.common.Pagging;
+import th.co.aoe.makedev.missconsult.xstream.common.Paging;
 import th.co.aoe.makedev.missconsult.xstream.common.VResultMessage;
 import th.co.aoe.makedev.missconsult.xstream.common.VServiceXML;
 
@@ -50,14 +50,14 @@ public class PostCommon {
 				}*/
 				xstream.processAnnotations(className);
 				int startIndex = 0;
-				if(vserviceXML.getPagging()==null){
-					Pagging p = new Pagging();
+				if(vserviceXML.getPaging()==null){
+					Paging p = new Paging();
 					p.setPageNo(1);
 					p.setPageSize(PAGE_SIZE);
-					vserviceXML.setPagging(p);
+					vserviceXML.setPaging(p);
 				}
-				startIndex = vserviceXML.getPagging().getPageNo()==1?0:(vserviceXML.getPagging().getPageNo()-1)*vserviceXML.getPagging().getPageSize();
-				vserviceXML.getPagging().setStartIndex(startIndex);
+				startIndex = vserviceXML.getPaging().getPageNo()==1?0:(vserviceXML.getPaging().getPageNo()-1)*vserviceXML.getPaging().getPageSize();
+				vserviceXML.getPaging().setStartIndex(startIndex);
 				String xString = xstream.toXML(vserviceXML);
 				ByteArrayEntity entity = null;
 				try {
@@ -93,8 +93,8 @@ public class PostCommon {
 							if(vresultMessage.getMaxRow()!=null && vresultMessage.getMaxRow().length()!=0)
 								maxRow = Integer.parseInt(vresultMessage.getMaxRow());
 							int pageSize = 0;
-							if(vserviceXML.getPagging()!=null )
-								pageSize = vserviceXML.getPagging().getPageSize();				
+							if(vserviceXML.getPaging()!=null )
+								pageSize = vserviceXML.getPaging().getPageSize();				
 							int lastpage = (maxRow/pageSize)+((maxRow%pageSize)==0?0:1);
 							vresultMessage.setLastpage(lastpage+"");
 						}
