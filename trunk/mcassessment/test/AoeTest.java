@@ -7,6 +7,8 @@ import th.co.imake.missconsult.assessment.service.McDegreeService;
 
 
 public class AoeTest {
+	private static Character mdName;
+
 	public static void main(String[] args) {
 		System.out.println("************** BEGINNING PROGRAM **************");
 		ApplicationContext context = new ClassPathXmlApplicationContext(
@@ -19,8 +21,7 @@ public class AoeTest {
 		//personService.insert(person);
 		/*System.out.println("Person : " + person + " added successfully");
 		List<Aoe> persons = personService.fetchAllUsers();
-		System.out.println("The list of all personss = " + persons);
-		System.out.println("************** ENDING PROGRAM *****************");
 		*/
+	System.out.println(personService.findMcDegreeM("mdName"));
 	}
 }
