@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import th.co.aoe.makedev.missconsult.xstream.common.Paging;
 import th.co.imake.missconsult.assessment.domain.McDegree;
-import th.co.imake.missconsult.assessment.model.McDegreeDTO;
+import th.co.imake.missconsult.assessment.model.McDegreeM;
 import th.co.imake.missconsult.assessment.repository.McDegreeRepository;
 import th.co.imake.missconsult.assessment.service.McDegreeService;
 
@@ -22,19 +22,19 @@ public class McDegreeServiceImpl implements McDegreeService {
 		return new McDegree();
 	}
 
-	private McDegreeDTO initObjectDTO() {
-		return new McDegreeDTO();
+	private McDegreeM initObjectDTO() {
+		return new McDegreeM();
 	}
 
 	@Override
-	public List<McDegreeDTO> selectAll() {
+	public List<McDegreeM> selectAll() {
 		// TODO Auto-generated method stub
 		List<McDegree> list = mcDegreeRepository.selectAll();
-		List<McDegreeDTO> listDTO = null;
+		List<McDegreeM> listDTO = null;
 		if (list != null) {
-			listDTO = new ArrayList<McDegreeDTO>(list.size());
+			listDTO = new ArrayList<McDegreeM>(list.size());
 			for (McDegree mcDegree : list) {
-				McDegreeDTO mcDegreeDTO = initObjectDTO();
+				McDegreeM mcDegreeDTO = initObjectDTO();
 				BeanUtils.copyProperties(mcDegree, mcDegreeDTO);
 				listDTO.add(mcDegreeDTO);
 			}
@@ -43,7 +43,7 @@ public class McDegreeServiceImpl implements McDegreeService {
 	}
 
 	@Override
-	public Integer saveMcDegree(McDegreeDTO mcDegreeDTO) {
+	public Integer saveMcDegree(McDegreeM mcDegreeDTO) {
 		// TODO Auto-generated method stub
 		McDegree mcDegree = initObjectDomain();
 		BeanUtils.copyProperties(mcDegreeDTO, mcDegree);
@@ -51,7 +51,7 @@ public class McDegreeServiceImpl implements McDegreeService {
 	}
 
 	@Override
-	public int updateMcDegree(McDegreeDTO mcDegreeDTO) {
+	public int updateMcDegree(McDegreeM mcDegreeDTO) {
 		// TODO Auto-generated method stub
 		McDegree mcDegree = initObjectDomain();
 		BeanUtils.copyProperties(mcDegreeDTO, mcDegree);
@@ -59,7 +59,7 @@ public class McDegreeServiceImpl implements McDegreeService {
 	}
 
 	@Override
-	public int deleteMcDegree(McDegreeDTO mcDegreeDTO) {
+	public int deleteMcDegree(McDegreeM mcDegreeDTO) {
 		// TODO Auto-generated method stub
 		McDegree mcDegree = initObjectDomain();
 		BeanUtils.copyProperties(mcDegreeDTO, mcDegree);
@@ -68,16 +68,16 @@ public class McDegreeServiceImpl implements McDegreeService {
 	}
 
 	@Override
-	public McDegreeDTO findMcDegreeById(Integer mcId) {
+	public McDegreeM findMcDegreeById(Integer mcId) {
 		// TODO Auto-generated method stub
 		McDegree mcDegree =  mcDegreeRepository.findMcDegreeById(mcId);
-		McDegreeDTO mcDegreeDTO = initObjectDTO();
+		McDegreeM mcDegreeDTO = initObjectDTO();
 		BeanUtils.copyProperties(mcDegree, mcDegreeDTO);
 		return mcDegreeDTO;
 	}
 
 	@Override
-	public List searchMcDegree(McDegreeDTO mcDegreeDTO, Paging paging) {
+	public List searchMcDegree(McDegreeM mcDegreeDTO, Paging paging) {
 		// TODO Auto-generated method stub
 		return null;
 	}

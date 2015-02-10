@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import th.co.imake.missconsult.assessment.model.McDegreeDTO;
+import th.co.imake.missconsult.assessment.model.McDegreeM;
 import th.co.imake.missconsult.assessment.service.McDegreeService;
 
 @Controller
@@ -22,7 +22,7 @@ public class DegreeController {
 	    public String list(Model model, @RequestParam(value="pageNo", required=false) String pageNoStr)
 	    {
 	       
-		 List<McDegreeDTO> mcDegreeList= mcDegreeService.selectAll();
+		 List<McDegreeM> mcDegreeList= mcDegreeService.selectAll();
 	        model.addAttribute("mcDegreeList", mcDegreeList);
 	        return "assesment/degreeGoup";
 	    } 
