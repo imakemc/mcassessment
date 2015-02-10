@@ -3,7 +3,7 @@ package th.co.imake.missconsult.assessment.service;
 import java.util.List;
 
 import th.co.aoe.makedev.missconsult.xstream.common.Paging;
-import th.co.imake.missconsult.assessment.dto.McDegreeDTO;
+import th.co.imake.missconsult.assessment.model.McDegreeDTO;
 
 
 
