@@ -1,49 +1,42 @@
-package th.co.imake.missconsult.assessment.dto;
+package th.co.imake.missconsult.assessment.model;
 
 import java.io.Serializable;
-public class McResultDTO implements Serializable {
+
+public class McDoAssessmentDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private Integer mcId;
-	private Integer mcScore;
-	private Integer meId;
-	private Integer mqId;
+	private String mdaEmail;
+	private String mdaName;
+	private String mdaStatus;
 	private McCustomerAssessmentDTO mcCustomerAssessment;
 	private Integer mcustAssessmentId;
 	private String mdaHotlink;
-	public McResultDTO() {
+	public McDoAssessmentDTO() {
 	}
 
 	
-	public Integer getMcId() {
-		return this.mcId;
+
+	public String getMdaEmail() {
+		return this.mdaEmail;
 	}
 
-	public void setMcId(Integer mcId) {
-		this.mcId = mcId;
+	public void setMdaEmail(String mdaEmail) {
+		this.mdaEmail = mdaEmail;
 	}
 
-	public Integer getMcScore() {
-		return this.mcScore;
+	public String getMdaName() {
+		return this.mdaName;
 	}
 
-	public void setMcScore(Integer mcScore) {
-		this.mcScore = mcScore;
+	public void setMdaName(String mdaName) {
+		this.mdaName = mdaName;
 	}
 
-	public Integer getMeId() {
-		return this.meId;
+	public String getMdaStatus() {
+		return this.mdaStatus;
 	}
 
-	public void setMeId(Integer meId) {
-		this.meId = meId;
-	}
-
-	public Integer getMqId() {
-		return this.mqId;
-	}
-
-	public void setMqId(Integer mqId) {
-		this.mqId = mqId;
+	public void setMdaStatus(String mdaStatus) {
+		this.mdaStatus = mdaStatus;
 	}
 
 	public McCustomerAssessmentDTO getMcCustomerAssessment() {

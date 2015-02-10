@@ -1,4 +1,4 @@
-package th.co.imake.missconsult.assessment.dto;
+package th.co.imake.missconsult.assessment.model;
 
 import java.io.Serializable;
 public class McQuestionDTO implements Serializable {
