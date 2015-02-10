@@ -81,4 +81,12 @@ public class McDegreeServiceImpl implements McDegreeService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public McDegreeM findMcDegreeM(String mdName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 }

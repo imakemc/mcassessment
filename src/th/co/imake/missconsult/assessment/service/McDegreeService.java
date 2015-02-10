@@ -14,4 +14,5 @@ public interface McDegreeService {
 	public int deleteMcDegree(McDegreeM mcDegreeDTO);
 	public McDegreeM findMcDegreeById(Integer mcId);
 	public List searchMcDegree(McDegreeM mcDegreeDTO, Paging paging);
+	public McDegreeM findMcDegreeM(String mdName);
 }
