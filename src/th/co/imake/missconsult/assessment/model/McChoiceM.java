@@ -3,13 +3,13 @@ package th.co.imake.missconsult.assessment.model;
 import java.io.Serializable;
 
 
-public class McChoiceDTO implements Serializable {
+public class McChoiceM implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer mcId;
 	private Integer mcScore;
 	private String mcText;
-	private McQuestionDTO mcQuestion;
-	public McChoiceDTO() {
+	private McQuestionM mcQuestion;
+	public McChoiceM() {
 	}
 
 	public Integer getMcId() {
@@ -36,11 +36,11 @@ public class McChoiceDTO implements Serializable {
 		this.mcText = mcText;
 	}
 
-	public McQuestionDTO getMcQuestion() {
+	public McQuestionM getMcQuestion() {
 		return this.mcQuestion;
 	}
 
-	public void setMcQuestion(McQuestionDTO mcQuestion) {
+	public void setMcQuestion(McQuestionM mcQuestion) {
 		this.mcQuestion = mcQuestion;
 	}
 

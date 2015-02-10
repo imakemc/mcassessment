@@ -3,7 +3,7 @@ package th.co.imake.missconsult.assessment.model;
 import java.io.Serializable;
 
 
-public class RoleTypeDTO implements Serializable {
+public class RoleTypeM implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	
@@ -17,7 +17,7 @@ public class RoleTypeDTO implements Serializable {
 
 	private String type;
    
-	public RoleTypeDTO() {
+	public RoleTypeM() {
 	}
 
 	public Integer getRtId() {

@@ -3,7 +3,7 @@ package th.co.imake.missconsult.assessment.model;
 import java.io.Serializable;
 
 
-public class UserDTO implements Serializable {
+public class UserM implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
@@ -16,9 +16,9 @@ public class UserDTO implements Serializable {
 
 	private String username;
 
-	private RoleDTO role;
+	private RoleM role;
 
-	public UserDTO() {
+	public UserM() {
 	}
 
 	public Integer getId() {
@@ -61,11 +61,11 @@ public class UserDTO implements Serializable {
 		this.username = username;
 	}
 
-	public RoleDTO getRole() {
+	public RoleM getRole() {
 		return this.role;
 	}
 
-	public void setRole(RoleDTO role) {
+	public void setRole(RoleM role) {
 		this.role = role;
 	}
 

@@ -3,16 +3,16 @@ package th.co.imake.missconsult.assessment.model;
 import java.io.Serializable;
 
 
-public class McCustomerAssessmentDTO implements Serializable {
+public class McCustomerAssessmentM implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer mcustAssessmentId;
 	private Integer mcustAssessmentAmountAssessorTotal;
 	private Integer mcustAssessmentAmountAssessorUesed;
 	private String mcustAssessmentStatus;
 	private String mcustEmployee;
-	private McCustomerDTO mcCustomer;
-	private McSeryDTO mcSery;
-	public McCustomerAssessmentDTO() {
+	private McCustomerM mcCustomer;
+	private McSeryM mcSery;
+	public McCustomerAssessmentM() {
 	}
 
 	public Integer getMcustAssessmentId() {
@@ -55,19 +55,19 @@ public class McCustomerAssessmentDTO implements Serializable {
 		this.mcustEmployee = mcustEmployee;
 	}
 
-	public McCustomerDTO getMcCustomer() {
+	public McCustomerM getMcCustomer() {
 		return this.mcCustomer;
 	}
 
-	public void setMcCustomer(McCustomerDTO mcCustomer) {
+	public void setMcCustomer(McCustomerM mcCustomer) {
 		this.mcCustomer = mcCustomer;
 	}
 
-	public McSeryDTO getMcSery() {
+	public McSeryM getMcSery() {
 		return this.mcSery;
 	}
 
-	public void setMcSery(McSeryDTO mcSery) {
+	public void setMcSery(McSeryM mcSery) {
 		this.mcSery = mcSery;
 	}
 }

@@ -1,14 +1,14 @@
 package th.co.imake.missconsult.assessment.model;
 
 import java.io.Serializable;
-public class McQuestionDTO implements Serializable {
+public class McQuestionM implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer mqId;
 	private String maNameEng;
 	private String mqNameThai;
-	private McEvaluationDTO mcEvaluation;
+	private McEvaluationM mcEvaluation;
 
-	public McQuestionDTO() {
+	public McQuestionM() {
 	}
 
 	public Integer getMqId() {
@@ -35,11 +35,11 @@ public class McQuestionDTO implements Serializable {
 		this.mqNameThai = mqNameThai;
 	}
 
-	public McEvaluationDTO getMcEvaluation() {
+	public McEvaluationM getMcEvaluation() {
 		return this.mcEvaluation;
 	}
 
-	public void setMcEvaluation(McEvaluationDTO mcEvaluation) {
+	public void setMcEvaluation(McEvaluationM mcEvaluation) {
 		this.mcEvaluation = mcEvaluation;
 	}
 

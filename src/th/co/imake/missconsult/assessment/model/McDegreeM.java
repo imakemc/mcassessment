@@ -3,11 +3,11 @@ package th.co.imake.missconsult.assessment.model;
 import java.io.Serializable;
 
 
-public class McDegreeDTO implements Serializable {
+public class McDegreeM implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer mdId;
 	private String mdName;
-	public McDegreeDTO() {
+	public McDegreeM() {
 	}
 
 	public Integer getMdId() {
