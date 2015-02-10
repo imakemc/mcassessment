@@ -3,13 +3,13 @@ package th.co.imake.missconsult.assessment.model;
 import java.io.Serializable;
 
 
-public class McCustomerDTO implements Serializable {
+public class McCustomerM implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer mcustId;
 	private String mcustHrUserId;
 	private String mcustName;
 	private Integer mcustUnit;
-	public McCustomerDTO() {
+	public McCustomerM() {
 	}
 
 	public Integer getMcustId() {

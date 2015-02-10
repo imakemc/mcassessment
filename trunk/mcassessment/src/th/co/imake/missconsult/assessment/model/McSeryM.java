@@ -2,16 +2,16 @@ package th.co.imake.missconsult.assessment.model;
 
 import java.io.Serializable;
 
-public class McSeryDTO implements Serializable {
+public class McSeryM implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer msId;
 	private String msName;
 
 	private Integer msUnit;
     
-	private McDegreeDTO mcDegree;
+	private McDegreeM mcDegree;
     
-	public McSeryDTO() {
+	public McSeryM() {
 	}
 
 	public Integer getMsId() {
@@ -42,11 +42,11 @@ public class McSeryDTO implements Serializable {
 	
 	
 
-	public McDegreeDTO getMcDegree() {
+	public McDegreeM getMcDegree() {
 		return this.mcDegree;
 	}
 
-	public void setMcDegree(McDegreeDTO mcDegree) {
+	public void setMcDegree(McDegreeM mcDegree) {
 		this.mcDegree = mcDegree;
 	}
 

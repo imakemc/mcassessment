@@ -2,13 +2,13 @@ package th.co.imake.missconsult.assessment.model;
 
 import java.io.Serializable;
 
-public class McEvaluationDTO implements Serializable {
+public class McEvaluationM implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer meId;
 	private String MC_EVALUATIONcol;
 	private String mcIntro;
 	private String meName;
-	public McEvaluationDTO() {
+	public McEvaluationM() {
 	}
 
 	public Integer getMeId() {
