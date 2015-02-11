@@ -7,7 +7,7 @@ public class McOrderM implements Serializable {
 	private Integer moId;
 	private String moStatus;
 	private McCustomerM mcCustomer;
-	private McSeryM mcSery;
+	private McSeriesM mcSery;
 
 	public McOrderM() {
 	}
@@ -36,11 +36,11 @@ public class McOrderM implements Serializable {
 		this.mcCustomer = mcCustomer;
 	}
 
-	public McSeryM getMcSery() {
+	public McSeriesM getMcSery() {
 		return this.mcSery;
 	}
 
-	public void setMcSery(McSeryM mcSery) {
+	public void setMcSery(McSeriesM mcSery) {
 		this.mcSery = mcSery;
 	}
 

@@ -45,7 +45,7 @@ public class McCustomerAssessment implements Serializable {
 	//bi-directional many-to-one association to McSery
 	@ManyToOne
 	@JoinColumn(name="MS_ID")
-	private McSery mcSery;
+	private McSeries mcSery;
     /*
 	//bi-directional many-to-one association to McDoAssessment
 	@OneToMany(mappedBy="mcCustomerAssessment")
@@ -106,11 +106,11 @@ public class McCustomerAssessment implements Serializable {
 		this.mcCustomer = mcCustomer;
 	}
 
-	public McSery getMcSery() {
+	public McSeries getMcSery() {
 		return this.mcSery;
 	}
 
-	public void setMcSery(McSery mcSery) {
+	public void setMcSery(McSeries mcSery) {
 		this.mcSery = mcSery;
 	}
 }

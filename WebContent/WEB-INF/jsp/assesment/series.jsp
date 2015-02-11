@@ -1,50 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ID=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="WEB-INF/css/bootstrap.min.css" rel="stylesheet">
-<link href="WEB-INF/css/bootstrap-responsive.min.css" rel="stylesheet">
-<link href="WEB-INF/material/css/ripples.min.css" rel="stylesheet">
-<link href="WEB-INF/material/css/material-wfont.min.css" rel="stylesheet">
-<title>Series</title>
-</head>
-<body>
+<%@ page contentType="text/html; charset=utf-8" %>
+<%@ include file="/WEB-INF/jsp/includes.jsp" %>
+
+<jsp:include page="../header.jsp" />
 	<div style="min-height: 645px;">
-		<header>
-			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-				<div class="container-fluid" style="margin-top: 20px;">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-collapse">
-							<span class="sr-only">order</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a href="#" class="navbar-brand logo" style="font-family:verdana;font-size: 35px;">MissConsult</a>
-					</div>
-					<div>
-						<div class="collapse navbar-collapse" id="mynavbar-collapse">
-							<ul class="nav navbar-nav navbar-right">
-								<li class="active"><a href="file:///root/Desktop/mcs/WebContent/Order.html#">Order</a></li>
-								<li><a href="file:///root/Desktop/mcs/WebContent/index.html#">Customer</a></li>
-								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Setting<span class="caret"></span></a>
-									<ul class="dropdown-menu navbar-inverse" role="menu">
-										<li><a href="file:///root/Desktop/mcs/WebContent/Series.html#" style="color: #fff;">Series</a></li>
-										<li class="divider"></li>
-										<li><a href="file:///root/Desktop/mcs/WebContent/Evaluation.html#" style="color: #fff;">Evaluation</a></li>
-										<li class="divider"></li>
-										<li><a href="file:///root/Desktop/mcs/WebContent/Degree_Group.html#" style="color: #fff;">Degree Group</a></li>
-										<li class="divider"></li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</nav>
-		</header>
+		<jsp:include page="../headerNavi.jsp" />
 		<div class="container" style="background-color:#fff; box-shadow: 0px 5px 10px #3e4545; margin-bottom: 20px;">
 			<div class="row">
 	  			<div class="col-md-8 col-md-offset-2" style=" background: #ffffff; margin-top: 30px; min-height: 400px;">
@@ -70,7 +29,7 @@
 											  <div class="modal-dialog">
 											    <div class="modal-content">
 											      <div class="modal-header">
-											        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+											        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã</button>
 											        <h4 class="modal-title" style="color: #fff;">...</h4>
 											      </div>
 											      <div class="modal-body">
@@ -136,13 +95,13 @@
 												     			</table>
 											     			</div>
 											     			<ul class="pagination pagination-sm" style="margin: 0px;">
-															    <li class="disabled"><a href="javascript:void(0)">«</a></li>
+															    <li class="disabled"><a href="javascript:void(0)">Â«</a></li>
 															    <li class="active"><a href="javascript:void(0)">1</a></li>
 															    <li><a href="javascript:void(0)">2</a></li>
 															    <li><a href="javascript:void(0)">3</a></li>
 															    <li><a href="javascript:void(0)">4</a></li>
 															    <li><a href="javascript:void(0)">5</a></li>
-															    <li><a href="javascript:void(0)">»</a></li>
+															    <li><a href="javascript:void(0)">Â»</a></li>
 															</ul>
 											        	</fieldset>
 											        </form>
@@ -201,13 +160,13 @@
 		     			</table>
 		     		</div>
 		     		<ul class="pagination pagination-sm" style="float: right;">
-					    <li class="disabled"><a href="javascript:void(0)">«</a></li>
+					    <li class="disabled"><a href="javascript:void(0)">Â«</a></li>
 					    <li class="active"><a href="javascript:void(0)">1</a></li>
 					    <li><a href="javascript:void(0)">2</a></li>
 					    <li><a href="javascript:void(0)">3</a></li>
 					    <li><a href="javascript:void(0)">4</a></li>
 					    <li><a href="javascript:void(0)">5</a></li>
-					    <li><a href="javascript:void(0)">»</a></li>
+					    <li><a href="javascript:void(0)">Â»</a></li>
 					</ul>
 	     		</div>
      		</div>
@@ -234,10 +193,7 @@
   </div>
 </div>
 <!-- --------------------------------------------------------------------------- -->
-<script src="WEB-INF/js/jquery.min.js"></script>
-<script src="WEB-INF/js/bootstrap.min.js"></script>
-<script src="WEB-INF/material/js/ripples.min.js"></script>
-<script src="WEB-INF/material/js/material.min.js"></script>
+<jsp:include page="../footer.jsp" />
 <script>
     $(document).ready(function() {
         $.material.init();

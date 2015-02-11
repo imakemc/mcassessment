@@ -2,6 +2,7 @@ package th.co.imake.missconsult.assessment.web;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +22,6 @@ public class DegreeController {
 	 @RequestMapping(value={"/list"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
 	    public String list(Model model, @RequestParam(value="pageNo", required=false) String pageNoStr)
 	    {
-	       
 		 List<McDegreeM> mcDegreeList= mcDegreeService.selectAll();
 	        model.addAttribute("mcDegreeList", mcDegreeList);
 	        return "assesment/degreeGoup";

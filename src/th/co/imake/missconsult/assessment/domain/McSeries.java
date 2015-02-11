@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="MC_SERIES")
 @NamedQuery(name="McSery.findAll", query="SELECT m FROM McSery m")
-public class McSery implements Serializable {
+public class McSeries implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -57,7 +57,7 @@ public class McSery implements Serializable {
 		)
 	private List<McEvaluation> mcEvaluations;
    */
-	public McSery() {
+	public McSeries() {
 	}
 
 	public Integer getMsId() {
