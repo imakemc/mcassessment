@@ -2,7 +2,7 @@ package th.co.imake.missconsult.assessment.model;
 
 import java.io.Serializable;
 
-public class McSeryM implements Serializable {
+public class McSeriesM implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer msId;
 	private String msName;
@@ -11,7 +11,7 @@ public class McSeryM implements Serializable {
     
 	private McDegreeM mcDegree;
     
-	public McSeryM() {
+	public McSeriesM() {
 	}
 
 	public Integer getMsId() {

@@ -1,66 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ID=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="WEB-INF/css/bootstrap.min.css" rel="stylesheet">
-<link href="WEB-INF/css/bootstrap-responsive.min.css" rel="stylesheet">
-<link href="WEB-INF/material/css/ripples.min.css" rel="stylesheet">
-<link href="WEB-INF/material/css/material-wfont.min.css" rel="stylesheet">
-<title>Assessor</title>
-</head>
-<body>
+<%@ page contentType="text/html; charset=utf-8" %>
+<%@ include file="/WEB-INF/jsp/includes.jsp" %>
+
+<jsp:include page="../header.jsp" />
 	<div style="min-height: 645px;">
-		<header>
-			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-				<div class="container-fluid" style="">
-					<div class="navbar-header">
-<!-- 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-collapse"> -->
-<!-- 							<span class="sr-only">order</span> -->
-<!-- 							<span class="icon-bar"></span> -->
-<!-- 							<span class="icon-bar"></span> -->
-<!-- 							<span class="icon-bar"></span> -->
-<!-- 						</button> -->
-						<a href="#" class="navbar-brand logo" style="font-family:verdana;font-size: 35px;">MissConsult</a>
-					</div>
-					<ul class="nav navbar-nav navbar-right">
-<!-- =============================Login===================================== -->
-<!-- 			          <li class="dropdown" id="menuLogin"> -->
-<!-- 			            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin"><i class="glyphicon glyphicon-log-in"></i> Login</a> -->
-<!-- 			            <div class="dropdown-menu" style="padding: 10px;"> -->
-<!-- 			              <form class="form" id="formLogin">  -->
-<!-- 			                <input name="username" id="username" class="form-control" placeholder="Username" type="text">  -->
-<!-- 			                <input name="password" id="password" class="form-control" placeholder="Password" type="password"><br> -->
-<!-- 			                <button type="button" id="btnLogin" class="btn btn-xs" style="float: right;">Login</button> -->
-<!-- 			              </form> -->
-<!-- 			            </div> -->
-<!-- 			          </li> -->
-<!-- =========================================================================== -->
-<!-- ==============================User========================================= -->
-<!-- 							<div class="col-md-12"> -->
-<!-- 								<form class="form-horizontal"> -->
-<!-- 									<fieldset> -->
-<!-- 										<div class="form-group"> -->
-<!-- 											<span style="padding: 7px;">System Time: &nbsp;&nbsp;&nbsp;</span><span>DD/MM/YY</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>hh:ss </span>&nbsp;&nbsp; -->
-<!-- 											<br><br> -->
-<!-- 											<span style="padding: 7px;">User</span>&nbsp;&nbsp;&nbsp;<a href="#" style="color: #fff;">Logout</a> -->
-<!-- 										</div> -->
-<!-- 									</fieldset> -->
-<!-- 								</form> -->
-<!-- 							</div> -->
-<!-- =========================================================================== -->
-			        </ul>	
-				</div>
-			</nav>
-		</header>
+		<jsp:include page="../headerNavi.jsp" />
 		<div class="container" style="background-color:#fff; box-shadow: 0px 5px 10px #3e4545; margin-bottom: 20px;">
 			<div class="row">
 	  			<div class="col-md-8 col-md-offset-2" style=" background: #ffffff; margin-top: 30px; min-height: 400px;">
-	  			<div style="text-align: center;"><h2>แบบประเมิน</h2></div>
+	  			<div style="text-align: center;"><h2>à¹à¸à¸à¸à¸£à¸°à¹à¸¡à¸´à¸</h2></div>
 		     		<div class="panel panel-info">
 					    <div class="panel-heading">
-					        <h3 class="panel-title">	1.ฉันชอบที่จะได้เตรียมพร้อมกับสิ่งที่ฉันจะพูด มากกว่าการต้องพูดสดๆ โดยไม่มีการเตรียมความพร้อมล่วงหน้า</h3>
+					        <h3 class="panel-title">	1.à¸à¸±à¸à¸à¸­à¸à¸à¸µà¹à¸à¸°à¹à¸à¹à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸£à¹à¸­à¸¡à¸à¸±à¸à¸ªà¸´à¹à¸à¸à¸µà¹à¸à¸±à¸à¸à¸°à¸à¸¹à¸ à¸¡à¸²à¸à¸à¸§à¹à¸²à¸à¸²à¸£à¸à¹à¸­à¸à¸à¸¹à¸à¸ªà¸à¹ à¹à¸à¸¢à¹à¸¡à¹à¸¡à¸µà¸à¸²à¸£à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸§à¸²à¸¡à¸à¸£à¹à¸­à¸¡à¸¥à¹à¸§à¸à¸«à¸à¹à¸²</h3>
 					    </div>
 					    <div class="panel-body">
 					    	<form class="form-horizontal" style="margin-left: 30px;">
@@ -68,19 +18,19 @@
 					    			<div class="form-group">
 					    				<div class="radio radio-primary">
 					    					<label>
-					    						<input name="sample2" value="option1" checked="" type="radio"> ไม่เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" checked="" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> ไม่เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				</div>
 					    			</div>
@@ -90,7 +40,7 @@
 					</div>
 					<div class="panel panel-info">
 					    <div class="panel-heading">
-					        <h3 class="panel-title">	2.ฉันชอบที่จะได้เตรียมพร้อมกับสิ่งที่ฉันจะพูด มากกว่าการต้องพูดสดๆ โดยไม่มีการเตรียมความพร้อมล่วงหน้า</h3>
+					        <h3 class="panel-title">	2.à¸à¸±à¸à¸à¸­à¸à¸à¸µà¹à¸à¸°à¹à¸à¹à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸£à¹à¸­à¸¡à¸à¸±à¸à¸ªà¸´à¹à¸à¸à¸µà¹à¸à¸±à¸à¸à¸°à¸à¸¹à¸ à¸¡à¸²à¸à¸à¸§à¹à¸²à¸à¸²à¸£à¸à¹à¸­à¸à¸à¸¹à¸à¸ªà¸à¹ à¹à¸à¸¢à¹à¸¡à¹à¸¡à¸µà¸à¸²à¸£à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸§à¸²à¸¡à¸à¸£à¹à¸­à¸¡à¸¥à¹à¸§à¸à¸«à¸à¹à¸²</h3>
 					    </div>
 					    <div class="panel-body">
 					    	<form class="form-horizontal" style="margin-left: 30px;">
@@ -98,19 +48,19 @@
 					    			<div class="form-group">
 					    				<div class="radio radio-primary">
 					    					<label>
-					    						<input name="sample2" value="option1" checked="" type="radio"> ไม่เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" checked="" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> ไม่เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				</div>
 					    			</div>
@@ -120,7 +70,7 @@
 					</div>
 					<div class="panel panel-info">
 					    <div class="panel-heading">
-					        <h3 class="panel-title">	3.ฉันชอบที่จะได้เตรียมพร้อมกับสิ่งที่ฉันจะพูด มากกว่าการต้องพูดสดๆ โดยไม่มีการเตรียมความพร้อมล่วงหน้า</h3>
+					        <h3 class="panel-title">	3.à¸à¸±à¸à¸à¸­à¸à¸à¸µà¹à¸à¸°à¹à¸à¹à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸£à¹à¸­à¸¡à¸à¸±à¸à¸ªà¸´à¹à¸à¸à¸µà¹à¸à¸±à¸à¸à¸°à¸à¸¹à¸ à¸¡à¸²à¸à¸à¸§à¹à¸²à¸à¸²à¸£à¸à¹à¸­à¸à¸à¸¹à¸à¸ªà¸à¹ à¹à¸à¸¢à¹à¸¡à¹à¸¡à¸µà¸à¸²à¸£à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸§à¸²à¸¡à¸à¸£à¹à¸­à¸¡à¸¥à¹à¸§à¸à¸«à¸à¹à¸²</h3>
 					    </div>
 					    <div class="panel-body">
 					    	<form class="form-horizontal" style="margin-left: 30px;">
@@ -128,19 +78,19 @@
 					    			<div class="form-group">
 					    				<div class="radio radio-primary">
 					    					<label>
-					    						<input name="sample2" value="option1" checked="" type="radio"> ไม่เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" checked="" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> ไม่เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				</div>
 					    			</div>
@@ -150,7 +100,7 @@
 					</div>
 					<div class="panel panel-info">
 					    <div class="panel-heading">
-					        <h3 class="panel-title">	4.ฉันชอบที่จะได้เตรียมพร้อมกับสิ่งที่ฉันจะพูด มากกว่าการต้องพูดสดๆ โดยไม่มีการเตรียมความพร้อมล่วงหน้า</h3>
+					        <h3 class="panel-title">	4.à¸à¸±à¸à¸à¸­à¸à¸à¸µà¹à¸à¸°à¹à¸à¹à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸£à¹à¸­à¸¡à¸à¸±à¸à¸ªà¸´à¹à¸à¸à¸µà¹à¸à¸±à¸à¸à¸°à¸à¸¹à¸ à¸¡à¸²à¸à¸à¸§à¹à¸²à¸à¸²à¸£à¸à¹à¸­à¸à¸à¸¹à¸à¸ªà¸à¹ à¹à¸à¸¢à¹à¸¡à¹à¸¡à¸µà¸à¸²à¸£à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸§à¸²à¸¡à¸à¸£à¹à¸­à¸¡à¸¥à¹à¸§à¸à¸«à¸à¹à¸²</h3>
 					    </div>
 					    <div class="panel-body">
 					    	<form class="form-horizontal" style="margin-left: 30px;">
@@ -158,19 +108,19 @@
 					    			<div class="form-group">
 					    				<div class="radio radio-primary">
 					    					<label>
-					    						<input name="sample2" value="option1" checked="" type="radio"> ไม่เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" checked="" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> ไม่เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				</div>
 					    			</div>
@@ -180,7 +130,7 @@
 					</div>
 					<div class="panel panel-info">
 					    <div class="panel-heading">
-					        <h3 class="panel-title">	5.ฉันชอบที่จะได้เตรียมพร้อมกับสิ่งที่ฉันจะพูด มากกว่าการต้องพูดสดๆ โดยไม่มีการเตรียมความพร้อมล่วงหน้า</h3>
+					        <h3 class="panel-title">	5.à¸à¸±à¸à¸à¸­à¸à¸à¸µà¹à¸à¸°à¹à¸à¹à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸£à¹à¸­à¸¡à¸à¸±à¸à¸ªà¸´à¹à¸à¸à¸µà¹à¸à¸±à¸à¸à¸°à¸à¸¹à¸ à¸¡à¸²à¸à¸à¸§à¹à¸²à¸à¸²à¸£à¸à¹à¸­à¸à¸à¸¹à¸à¸ªà¸à¹ à¹à¸à¸¢à¹à¸¡à¹à¸¡à¸µà¸à¸²à¸£à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸§à¸²à¸¡à¸à¸£à¹à¸­à¸¡à¸¥à¹à¸§à¸à¸«à¸à¹à¸²</h3>
 					    </div>
 					    <div class="panel-body">
 					    	<form class="form-horizontal" style="margin-left: 30px;">
@@ -188,19 +138,19 @@
 					    			<div class="form-group">
 					    				<div class="radio radio-primary">
 					    					<label>
-					    						<input name="sample2" value="option1" checked="" type="radio"> ไม่เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" checked="" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> ไม่เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				</div>
 					    			</div>
@@ -210,7 +160,7 @@
 					</div>
 					<div class="panel panel-info">
 					    <div class="panel-heading">
-					        <h3 class="panel-title">	6.ฉันชอบที่จะได้เตรียมพร้อมกับสิ่งที่ฉันจะพูด มากกว่าการต้องพูดสดๆ โดยไม่มีการเตรียมความพร้อมล่วงหน้า</h3>
+					        <h3 class="panel-title">	6.à¸à¸±à¸à¸à¸­à¸à¸à¸µà¹à¸à¸°à¹à¸à¹à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸£à¹à¸­à¸¡à¸à¸±à¸à¸ªà¸´à¹à¸à¸à¸µà¹à¸à¸±à¸à¸à¸°à¸à¸¹à¸ à¸¡à¸²à¸à¸à¸§à¹à¸²à¸à¸²à¸£à¸à¹à¸­à¸à¸à¸¹à¸à¸ªà¸à¹ à¹à¸à¸¢à¹à¸¡à¹à¸¡à¸µà¸à¸²à¸£à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸§à¸²à¸¡à¸à¸£à¹à¸­à¸¡à¸¥à¹à¸§à¸à¸«à¸à¹à¸²</h3>
 					    </div>
 					    <div class="panel-body">
 					    	<form class="form-horizontal" style="margin-left: 30px;">
@@ -218,19 +168,19 @@
 					    			<div class="form-group">
 					    				<div class="radio radio-primary">
 					    					<label>
-					    						<input name="sample2" value="option1" checked="" type="radio"> ไม่เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" checked="" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> ไม่เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				</div>
 					    			</div>
@@ -240,7 +190,7 @@
 					</div>
 					<div class="panel panel-info">
 					    <div class="panel-heading">
-					        <h3 class="panel-title">	7.ฉันชอบที่จะได้เตรียมพร้อมกับสิ่งที่ฉันจะพูด มากกว่าการต้องพูดสดๆ โดยไม่มีการเตรียมความพร้อมล่วงหน้า</h3>
+					        <h3 class="panel-title">	7.à¸à¸±à¸à¸à¸­à¸à¸à¸µà¹à¸à¸°à¹à¸à¹à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸£à¹à¸­à¸¡à¸à¸±à¸à¸ªà¸´à¹à¸à¸à¸µà¹à¸à¸±à¸à¸à¸°à¸à¸¹à¸ à¸¡à¸²à¸à¸à¸§à¹à¸²à¸à¸²à¸£à¸à¹à¸­à¸à¸à¸¹à¸à¸ªà¸à¹ à¹à¸à¸¢à¹à¸¡à¹à¸¡à¸µà¸à¸²à¸£à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸§à¸²à¸¡à¸à¸£à¹à¸­à¸¡à¸¥à¹à¸§à¸à¸«à¸à¹à¸²</h3>
 					    </div>
 					    <div class="panel-body">
 					    	<form class="form-horizontal" style="margin-left: 30px;">
@@ -248,19 +198,19 @@
 					    			<div class="form-group">
 					    				<div class="radio radio-primary">
 					    					<label>
-					    						<input name="sample2" value="option1" checked="" type="radio"> ไม่เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" checked="" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> ไม่เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				</div>
 					    			</div>
@@ -270,7 +220,7 @@
 					</div>
 					<div class="panel panel-info">
 					    <div class="panel-heading">
-					        <h3 class="panel-title">	8.ฉันชอบที่จะได้เตรียมพร้อมกับสิ่งที่ฉันจะพูด มากกว่าการต้องพูดสดๆ โดยไม่มีการเตรียมความพร้อมล่วงหน้า</h3>
+					        <h3 class="panel-title">	8.à¸à¸±à¸à¸à¸­à¸à¸à¸µà¹à¸à¸°à¹à¸à¹à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸£à¹à¸­à¸¡à¸à¸±à¸à¸ªà¸´à¹à¸à¸à¸µà¹à¸à¸±à¸à¸à¸°à¸à¸¹à¸ à¸¡à¸²à¸à¸à¸§à¹à¸²à¸à¸²à¸£à¸à¹à¸­à¸à¸à¸¹à¸à¸ªà¸à¹ à¹à¸à¸¢à¹à¸¡à¹à¸¡à¸µà¸à¸²à¸£à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸§à¸²à¸¡à¸à¸£à¹à¸­à¸¡à¸¥à¹à¸§à¸à¸«à¸à¹à¸²</h3>
 					    </div>
 					    <div class="panel-body">
 					    	<form class="form-horizontal" style="margin-left: 30px;">
@@ -278,19 +228,19 @@
 					    			<div class="form-group">
 					    				<div class="radio radio-primary">
 					    					<label>
-					    						<input name="sample2" value="option1" checked="" type="radio"> ไม่เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" checked="" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> ไม่เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				</div>
 					    			</div>
@@ -300,7 +250,7 @@
 					</div>
 					<div class="panel panel-info">
 					    <div class="panel-heading">
-					        <h3 class="panel-title">	9.ฉันชอบที่จะได้เตรียมพร้อมกับสิ่งที่ฉันจะพูด มากกว่าการต้องพูดสดๆ โดยไม่มีการเตรียมความพร้อมล่วงหน้า</h3>
+					        <h3 class="panel-title">	9.à¸à¸±à¸à¸à¸­à¸à¸à¸µà¹à¸à¸°à¹à¸à¹à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸£à¹à¸­à¸¡à¸à¸±à¸à¸ªà¸´à¹à¸à¸à¸µà¹à¸à¸±à¸à¸à¸°à¸à¸¹à¸ à¸¡à¸²à¸à¸à¸§à¹à¸²à¸à¸²à¸£à¸à¹à¸­à¸à¸à¸¹à¸à¸ªà¸à¹ à¹à¸à¸¢à¹à¸¡à¹à¸¡à¸µà¸à¸²à¸£à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸§à¸²à¸¡à¸à¸£à¹à¸­à¸¡à¸¥à¹à¸§à¸à¸«à¸à¹à¸²</h3>
 					    </div>
 					    <div class="panel-body">
 					    	<form class="form-horizontal" style="margin-left: 30px;">
@@ -308,19 +258,19 @@
 					    			<div class="form-group">
 					    				<div class="radio radio-primary">
 					    					<label>
-					    						<input name="sample2" value="option1" checked="" type="radio"> ไม่เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" checked="" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> ไม่เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				</div>
 					    			</div>
@@ -330,7 +280,7 @@
 					</div>
 					<div class="panel panel-info">
 					    <div class="panel-heading">
-					        <h3 class="panel-title">	10.ฉันชอบที่จะได้เตรียมพร้อมกับสิ่งที่ฉันจะพูด มากกว่าการต้องพูดสดๆ โดยไม่มีการเตรียมความพร้อมล่วงหน้า</h3>
+					        <h3 class="panel-title">	10.à¸à¸±à¸à¸à¸­à¸à¸à¸µà¹à¸à¸°à¹à¸à¹à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸£à¹à¸­à¸¡à¸à¸±à¸à¸ªà¸´à¹à¸à¸à¸µà¹à¸à¸±à¸à¸à¸°à¸à¸¹à¸ à¸¡à¸²à¸à¸à¸§à¹à¸²à¸à¸²à¸£à¸à¹à¸­à¸à¸à¸¹à¸à¸ªà¸à¹ à¹à¸à¸¢à¹à¸¡à¹à¸¡à¸µà¸à¸²à¸£à¹à¸à¸£à¸µà¸¢à¸¡à¸à¸§à¸²à¸¡à¸à¸£à¹à¸­à¸¡à¸¥à¹à¸§à¸à¸«à¸à¹à¸²</h3>
 					    </div>
 					    <div class="panel-body">
 					    	<form class="form-horizontal" style="margin-left: 30px;">
@@ -338,19 +288,19 @@
 					    			<div class="form-group">
 					    				<div class="radio radio-primary">
 					    					<label>
-					    						<input name="sample2" value="option1" checked="" type="radio"> ไม่เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" checked="" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> ไม่เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸¡à¹à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วย
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢
 					    					</label>
 					    				
 					    					<label>
-					    						<input name="sample2" value="option1" type="radio"> เห็นด้วยอย่างมาก
+					    						<input name="sample2" value="option1" type="radio"> à¹à¸«à¹à¸à¸à¹à¸§à¸¢à¸­à¸¢à¹à¸²à¸à¸¡à¸²à¸
 					    					</label>
 					    				</div>
 					    			</div>
@@ -371,7 +321,7 @@
       	<form class="form-horizontal">
 			<fieldset>
 	          	<div class="form-group">
-		            <label class="col-lg-10 col-md-offset-1 control-label" style="text-align: center; font-size: 22px;">ขอบคุณที่ทำการประเมินค่ะ</label>
+		            <label class="col-lg-10 col-md-offset-1 control-label" style="text-align: center; font-size: 22px;">à¸à¸­à¸à¸à¸¸à¸à¸à¸µà¹à¸à¸³à¸à¸²à¸£à¸à¸£à¸°à¹à¸¡à¸´à¸à¸à¹à¸°</label>
 	        	</div>
 	      	</fieldset>
 	      </form>
@@ -383,10 +333,7 @@
   </div>
 </div>
 <!-- --------------------------------------------------------------------------- -->
-<script src="WEB-INF/js/jquery.min.js"></script>
-<script src="WEB-INF/js/bootstrap.min.js"></script>
-<script src="WEB-INF/material/js/ripples.min.js"></script>
-<script src="WEB-INF/material/js/material.min.js"></script>
+<jsp:include page="../footer.jsp" />
 <script>
     $(document).ready(function() {
         $.material.init();

@@ -11,7 +11,7 @@ public class McCustomerAssessmentM implements Serializable {
 	private String mcustAssessmentStatus;
 	private String mcustEmployee;
 	private McCustomerM mcCustomer;
-	private McSeryM mcSery;
+	private McSeriesM mcSery;
 	public McCustomerAssessmentM() {
 	}
 
@@ -63,11 +63,11 @@ public class McCustomerAssessmentM implements Serializable {
 		this.mcCustomer = mcCustomer;
 	}
 
-	public McSeryM getMcSery() {
+	public McSeriesM getMcSery() {
 		return this.mcSery;
 	}
 
-	public void setMcSery(McSeryM mcSery) {
+	public void setMcSery(McSeriesM mcSery) {
 		this.mcSery = mcSery;
 	}
 }
