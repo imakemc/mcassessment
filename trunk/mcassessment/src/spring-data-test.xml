@@ -37,8 +37,8 @@
     <bean id="jpaDataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/MC_ASSESSMENT_DB" />
-		<property name="username" value="root" />
+		<property name="url" value="jdbc:mysql://localhost:3306/MC_ASSESSMENT_DB" /> 
+		<property name="username" value="root" /> 
 		<property name="password" value="root" />
 	</bean>
 <!-- 	
