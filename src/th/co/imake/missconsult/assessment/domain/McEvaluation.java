@@ -41,7 +41,15 @@ public class McEvaluation implements Serializable {
 	@ManyToMany(mappedBy="mcEvaluations")
 	private List<McSery> mcSeries;
 	*/
+	
 	public McEvaluation() {
+
+	}
+	
+	public McEvaluation(Integer meId,String mcIntro,String meName) {
+		this.meId=meId;
+		this.mcIntro=mcIntro;
+		this.meName=meName;
 	}
 
 	public Integer getMeId() {

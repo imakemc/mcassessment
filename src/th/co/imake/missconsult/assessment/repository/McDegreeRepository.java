@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import th.co.aoe.makedev.missconsult.xstream.common.Paging;
 import th.co.imake.missconsult.assessment.domain.McDegree;
+import th.co.imake.missconsult.assessment.model.McDegreeM;
 
 @Repository("mcDegreeRepository")
 @Transactional(propagation = Propagation.REQUIRED)
@@ -21,9 +22,29 @@ public class McDegreeRepository {
 	private EntityManager entityManager;
 
 	public List<McDegree> selectAll() {
-		Query query = entityManager.createQuery(SELECT_QUERY);
-		List<McDegree> users = (List<McDegree>) query.getResultList();
-		return users;
+		Query query = entityManager.createQuery(SELECT_QUERY,McDegree.class);
+//		List<McDegree> list = (List<McDegree>) query.getResultList();
+		List<McDegree> list = query.getResultList();
+
+		return list;
+	}
+	public List<McDegreeM> selectAllGroup() {
+		String sql = " SELECT mcd.MD_ID"
+				+ " ,mcd.MD_NAME"
+				+ " ,mcdg.MDG_ID "
+				+ " ,mcdg.MDG_NAME "
+				+ " ,mcdg.MDG_ASSESSOR "
+				+ " FROM mc_degree mcd "
+				+ " ,mc_degree_group mcdg "
+				+ " WHERE "
+				+ " mcd.MD_ID=mcdg.MD_ID";
+		Query query = entityManager.createNativeQuery(sql);
+//		List<McDegree> users = (List<McDegree>) query.getResultList();
+		List<McDegreeM> list =(List<McDegreeM>) query.getResultList();
+//		for(int i=0 ;i<list.size();i++){
+//			list.get(i).getMcDegreeGroups();
+//		}
+		return list;
 	}
 
 	public Integer saveMcDegree(McDegree mcDegree) {

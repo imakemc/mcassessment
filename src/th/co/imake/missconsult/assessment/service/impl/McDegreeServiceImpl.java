@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import th.co.aoe.makedev.missconsult.xstream.common.Paging;
 import th.co.imake.missconsult.assessment.domain.McDegree;
 import th.co.imake.missconsult.assessment.model.McDegreeM;
+import th.co.imake.missconsult.assessment.repository.McDegreeGroupRepository;
 import th.co.imake.missconsult.assessment.repository.McDegreeRepository;
 import th.co.imake.missconsult.assessment.service.McDegreeService;
 
@@ -17,6 +18,8 @@ import th.co.imake.missconsult.assessment.service.McDegreeService;
 public class McDegreeServiceImpl implements McDegreeService {
 	@Autowired
 	private McDegreeRepository mcDegreeRepository;
+	@Autowired
+	private McDegreeGroupRepository mcDegreeGroupRepository;
 
 	private McDegree initObjectDomain() {
 		return new McDegree();
@@ -36,6 +39,22 @@ public class McDegreeServiceImpl implements McDegreeService {
 			for (McDegree mcDegree : list) {
 				McDegreeM mcDegreeDTO = initObjectDTO();
 				BeanUtils.copyProperties(mcDegree, mcDegreeDTO);
+				listDTO.add(mcDegreeDTO);
+			}
+		}
+		return listDTO;
+	}
+	
+	@Override
+	public List<McDegreeM> selectAllGroup() {
+		List<McDegree> list = mcDegreeRepository.selectAll();
+		List<McDegreeM> listDTO = null;
+		if (list != null) {
+			listDTO = new ArrayList<McDegreeM>(list.size());
+			for (McDegree mcDegree : list) {
+				McDegreeM mcDegreeDTO = initObjectDTO();
+				BeanUtils.copyProperties(mcDegree, mcDegreeDTO);
+				mcDegreeDTO.setMcDegreeGroups(mcDegreeGroupRepository.getAllByDegreeId(mcDegreeDTO.getMdId()));
 				listDTO.add(mcDegreeDTO);
 			}
 		}
