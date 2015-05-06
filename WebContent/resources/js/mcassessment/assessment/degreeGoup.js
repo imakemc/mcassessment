@@ -3,44 +3,82 @@
 var degreeId = "";
 var degreeGroupId = "";
 $(document).ready(function() {
+	loadTableFirst();
 //    	contextPath = "<%= request.getContextPath() %>";
-    	console.log("contextPath : "+contextPath);
+//    	console.log("contextPath : "+contextPath);
 		// ----------
-		    	    $('#degreeGuop').dataTable({
-		    		'iDisplayLength': 10,
-		    		'bPaginate': true,
-		    		"bProcessing": false,
-		    		"bInfo": true,
-		    		"destroy": true,
-		    		"bFilter":false,
-		            "sAjaxSource": contextPath+"/degree/ajaxGetDegreeGroupAll",
-		                    "fnServerData": function ( sSource, aoData, fnCallback ) {
-		                $.ajax( {
-		                    "dataType": 'json',
-		                    "type": "GET",
-		                    "url": sSource,
-		                    "data": {organizationId : 'sdsdsd'},
-		                    "success": function(data){
-		                    	console.log(data);
-		                    	setDegreeTable(data);
-		                    },
-		        			"error" : function(xhr, status, error) {
-		      				  console.log(arguments);	
-		      				  alert(error);
-		      				  alert(xhr.responseText);
-		      				}
-		                } );
-		            }
-// ,
-// 'aoColumns' : [{'mData' : 'mdId'},
-// { 'mData': 'mdName' }]
-   	    		   ,"sPaginationType" : "full_numbers",
-   	    		   "aLengthMenu" : [ [ 4, 10, 20, -1 ], [ 4, 10, 20, "All" ] ]
-		        } );
+//		    	    $('#degreeGuop').dataTable({
+//		    		'iDisplayLength': 10,
+//		    		'bPaginate': true,
+//		    		"bProcessing": false,
+//		    		"bInfo": true,
+//		    		"destroy": true,
+//		    		"bFilter":false,
+//		            "sAjaxSource": contextPath+"/degree/ajaxGetDegreeGroupAll",
+//		                    "fnServerData": function ( sSource, aoData, fnCallback ) {
+//		                $.ajax( {
+//		                    "dataType": 'json',
+//		                    "type": "GET",
+//		                    "url": sSource,
+//		                    "data": {organizationId : 'sdsdsd'},
+//		                    "success": function(data){
+//		                    	console.log(data);
+//		                    	setDegreeTable(data);
+//		                    },
+//		        			"error" : function(xhr, status, error) {
+//		      				  console.log(arguments);	
+//		      				  alert(error);
+//		      				  alert(xhr.responseText);
+//		      				}
+//		                } );
+//		            }
+//   	    		   ,"sPaginationType" : "full_numbers",
+//   	    		   "aLengthMenu" : [ [ 4, 10, 20, -1 ], [ 4, 10, 20, "All" ] ]
+//		        } );
 
 });
 		// alert("xx");
 		// $.material.init();
+
+function loadTableFirst(){
+	
+	console.log("contextPath : "+contextPath);
+	// ----------
+	    	    $('#degreeGuop').dataTable({
+	    		'iDisplayLength': 10,
+	    		'bPaginate': true,
+	    		"bProcessing": false,
+	    		"bInfo": true,
+	    		"destroy": true,
+	    		"bFilter":false,
+	            "sAjaxSource": contextPath+"/degree/ajaxGetDegreeGroupAll",
+	                    "fnServerData": function ( sSource, aoData, fnCallback ) {
+	                $.ajax( {
+	                    "dataType": 'json',
+	                    "type": "GET",
+	                    "url": sSource,
+	                    "async":true,
+	                    "data": {organizationId : 'sdsdsd'},
+	                    "success": function(data){
+	                    	console.log(data);
+	                    	setDegreeTable(data);
+	                    },
+	        			"error" : function(xhr, status, error) {
+	      				  console.log(arguments);	
+	      				  alert(error);
+	      				  alert(xhr.responseText);
+	      				}
+	                } );
+	            }
+//,
+//'aoColumns' : [{'mData' : 'mdId'},
+//{ 'mData': 'mdName' }]
+	    		   ,"sPaginationType" : "full_numbers",
+	    		   "aLengthMenu" : [ [ 4, 10, 20, -1 ], [ 4, 10, 20, "All" ] ]
+	        } );
+	
+}
+
 function setDegreeTable(data){
 		console.log("into set Data table");
 		var table =$('#degreeGuop').dataTable();
@@ -242,6 +280,7 @@ function onAddDegreeGroup(){
     	$("#input-assessor").val("");
     	$("#input-groupName").val("");
     	onLoadDataTableGroup(degreeId);
+    	loadTableFirst();
     },
 	"error" : function(xhr, status, error) {
 		  console.log(arguments);	

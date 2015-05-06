@@ -17,7 +17,7 @@ String contextPath = request.getContextPath();
 			<div class="col-md-8 col-md-offset-2"
 				style="background: #ffffff; margin-top: 30px; min-height: 400px;">
 				<div class="table-responsive">
-				<button type="button" class="btn btn-info" style="margin-bottom: 5px;" data-toggle="modal" data-target="#degree-popup"><span class="glyphicon glyphicon-plus"></span> Add </button>
+<!-- 				<button type="button" class="btn btn-info" style="margin-bottom: 5px;" data-toggle="modal" data-target="#degree-popup"><span class="glyphicon glyphicon-plus"></span> Add </button> -->
 					<table id="degreeGuop" class="table tb table-hover border"style="margin-bottom: 15px;">
 						<thead>
 							<tr class="headerTables">
