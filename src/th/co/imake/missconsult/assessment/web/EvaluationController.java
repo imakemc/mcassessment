@@ -28,7 +28,7 @@ public class EvaluationController {
 	    {
 //		 List<McEvaluationM> mcEvaluationList=mcEvaluationService.selectAll();
 //		 	model.addAttribute("mcEvaluationList", mcEvaluationList);
-		 	model.addAttribute("title", "Evaluation");
+		 	model.addAttribute("title", "Evaluation"); 
 	        return "assesment/evaluation";
 	    } 
 	 
