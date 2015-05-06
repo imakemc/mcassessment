@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import th.co.aoe.makedev.missconsult.xstream.common.Paging;
+import th.co.imake.missconsult.assessment.domain.McEvaluation;
 import th.co.imake.missconsult.assessment.model.McEvaluationM;
 import th.co.imake.missconsult.assessment.repository.McEvaluationRepository;
 import th.co.imake.missconsult.assessment.service.McEvaluationService;
@@ -16,8 +17,7 @@ public class McEvaluationServiceImpl implements McEvaluationService{
 
 	@Override
 	public List<McEvaluationM> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return mcEvaluationRepository.selectAll();
 	}
 
 	@Override
@@ -42,6 +42,13 @@ public class McEvaluationServiceImpl implements McEvaluationService{
 	public List searchMcEvaluation(McEvaluationM mcEvaluationDTO, Paging paging) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Integer insertAll(McEvaluation evaluation) {
+		Integer id = mcEvaluationRepository.insertAll(evaluation);
+//			Integer id = mcEvaluationRepository.getLastId();
+		return id;
 	}
 } 
 

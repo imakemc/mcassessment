@@ -6,6 +6,7 @@ public class McDegreeGroupForm extends CommonForm implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer mdgId;
 	private String mdgName;
+	private Integer mdgAssessor;
 	private McDegreeForm mcDegree;
 
 	public McDegreeGroupForm() {
@@ -35,4 +36,12 @@ public class McDegreeGroupForm extends CommonForm implements Serializable {
 		this.mcDegree = mcDegree;
 	}
 
+	public Integer getMdgAssessor() {
+		return mdgAssessor;
+	}
+
+	public void setMdgAssessor(Integer mdgAssessor) {
+		this.mdgAssessor = mdgAssessor;
+	}
+ 
 }

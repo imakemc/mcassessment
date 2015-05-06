@@ -1,5 +1,3 @@
-<%@ page contentType="text/html; charset=utf-8" %>
-<%@ include file="/WEB-INF/jsp/includes.jsp" %>
 <header>
 			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 				<div class="container-fluid" style="margin-top: 20px;">

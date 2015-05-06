@@ -1,11 +1,14 @@
 package th.co.imake.missconsult.assessment.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -34,6 +37,13 @@ public class McDegree implements Serializable {
 	@OneToMany(mappedBy="mcDegree")
 	private List<McSery> mcSeries;
   */
+//	@OneToMany(fetch=FetchType.LAZY)
+//	@OneToMany(mappedBy="mcDegree",fetch=FetchType.LAZY)
+//	private List<McDegreeGroup> mcDegreeGroups;
+//	@OneToMany(mappedBy="mdiD")
+	@OneToMany(targetEntity=McDegreeGroup.class,mappedBy="mcdegree",cascade={CascadeType.ALL},orphanRemoval=true)
+	private List<McDegreeGroup> mcDegreeGroups;
+	
 	public McDegree() {
 	}
 
@@ -52,4 +62,7 @@ public class McDegree implements Serializable {
 	public void setMdName(String mdName) {
 		this.mdName = mdName;
 	}
+
+//C
+	
 }
