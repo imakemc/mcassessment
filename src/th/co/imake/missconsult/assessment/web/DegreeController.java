@@ -55,7 +55,8 @@ public class DegreeController {
 		 
 	        model.addAttribute("mcDegreeList", mcDegreeList);
 	        model.addAttribute("title", "degreeGuop");
-//	        return "assesment/degreeGoup";
+//	        return "assesment/degreeGoup"; 
+	        
 	        return new ModelAndView("assesment/degreeGoup" , "mcDegreeForm", mcDegreeList);
 	    } 
 	 
