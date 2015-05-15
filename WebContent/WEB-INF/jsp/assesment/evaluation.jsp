@@ -17,7 +17,7 @@ String contextPath = request.getContextPath();
 			<div class="col-md-8 col-md-offset-2"
 				style="background: #ffffff; margin-top: 30px; min-height: 400px;">
 				<div class="table-responsive">
-				<button type="button" class="btn btn-info" style="margin-bottom: id="btnAdd" 5px;" data-toggle="modal" data-target="#add-edit-popup"><span class="glyphicon glyphicon-plus"></span> Add </button>
+				<button type="button" class="btn btn-info" onclick="onAddEvalClick();" data-toggle="modal" data-target="#add-edit-popup"><span class="glyphicon glyphicon-plus"></span> Add </button>
 					<table id="evaluationTable" class="table tb table-hover border"style="margin-bottom: 15px;">
 							<thead>
 			     				<tr class="headerTables">
@@ -35,7 +35,7 @@ String contextPath = request.getContextPath();
 
 	
 <!--  --------------------------------	 -->
-	<!-- ----------------------------------group-popup------------------------------------------------------------- -->
+	<!-- ----------------------------------Question-popup------------------------------------------------------------- -->
 <div id="add-edit-popup" class="modal fade" tabindex="-1">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -47,9 +47,9 @@ String contextPath = request.getContextPath();
 <!--         	<button type="button" class="btn btn-info btn-xs" style="margin-bottom: 5px;" data-toggle="modal" data-target="#group-popup"><span class="glyphicon glyphicon-plus"></span> Add </button> -->
            		<div class="table-responsive">	
            		<div class="tabbable">
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#pane1" data-toggle="tab">Information</a></li>
-    <li class="disabled-link"><a href="#pane2" data-toggle="tab">Question</a></li>
+  <ul class="nav nav-tabs" id="myTab">
+    <li id="t1" class="active"><a href="#pane1" data-toggle="tab">Information</a></li>
+    <li id="t2" class=""><a href="#pane2" data-toggle="tab">Question</a></li>
 <!--     <li><a href="#pane3" data-toggle="tab">Question</a></li> -->
   </ul>
   <div class="tab-content">
@@ -78,16 +78,17 @@ String contextPath = request.getContextPath();
 	      	</div>
 <!-- 	      </form> -->
       
-      
     </div>
+    
+    
     <div id="pane2" class="tab-pane">
     <h4> Question</h4>
 <!--       		<div class="row"> -->
 <!-- 			<div class="col-md-8 col-md-offset-2" -->
 <!-- 				style="background: #ffffff; margin-top: 30px; min-height: 400px;"> -->
 <!-- 				<div class="table-responsive"> -->
-				<button type="button" class="btn btn-info" style="margin-bottom: id= "btnAddQ" 5px;" data-toggle="modal" data-target="#add-edit-popup"><span class="glyphicon glyphicon-plus"></span> Add </button>
-					<table id="evaluationTable" class="table tb table-hover border"style="margin-bottom: 15px;">
+				<button type="button" class="btn btn-info" onclick="onAddQuetionClick();" style="margin-bottom:5px;"  data-toggle="modal" data-target="#add-edit-question-popup"><span class="glyphicon glyphicon-plus"></span> Add </button>
+					<table id="QuestionTable" class="table tb table-hover border"style="margin-bottom: 15px;">
 							<thead>
 			     				<tr class="headerTables">
 				     				<td class="col-md-2">ID</td>
@@ -151,12 +152,71 @@ String contextPath = request.getContextPath();
 <!-- 	      	</td> -->
 <!-- 	      </tr> -->
 <!-- 	      </table> -->
+<!-- 	      </div> -->
+	    </div>
+	  </div>
+	</div>	
+<!-- --------------------------------------------------------------------------- -->
+	<!-- ----------------------------------Question-Add-popup------------------------------------------------------------- -->
+<div id="add-edit-question-popup" class="modal fade" tabindex="-1">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+	        <h4 class="modal-title"><span id="degree-popup-title">Question</span></h4>
+	      </div>
+	      <div class="modal-body">
+<!--         	<button type="button" class="btn btn-info btn-xs" style="margin-bottom: 5px;" data-toggle="modal" data-target="#group-popup"><span class="glyphicon glyphicon-plus"></span> Add </button> -->
+           		<div class="table-responsive">	
+           		
+           		<div class="form-group">
+	        		<br>
+		            <label class="col-lg-3 col-md-offset-1 control-label">Thai:</label>
+					 <div class="col-lg-7">
+		                <textarea class="form-control" rows="7" id="QThai"></textarea>
+		            </div>
+	        		<br>
+		            <label class="col-lg-3 col-md-offset-1 control-label">English:</label>
+					 <div class="col-lg-7">
+		                <textarea class="form-control" rows="7" id="QEng"></textarea>
+		            </div>
+		            <br>
+		            <label class="col-lg-3 col-md-offset-1 control-label">choices:</label>
+					 <div class="col-lg-7">
+		                <table id="choiceTable" class="table tb table-hover border"style="margin-bottom: 15px;">
+		                	<thead>
+			     				<tr class="headerTables">
+				     				<td class="col-md-2">Order</td>
+				     				<td class="col-md-2">Score</td>
+				     			</tr>
+				     		</thead>		
+		                </table>
+		            </div>
+	        	</div>
+
+</div>
+<!-- /.tabbable -->
+           		
+<!-- 	     			<table class="table tb table-hover border" id="groupTable" style="margin-bottom: 15px;"> -->
+<!-- 		     			<thead> -->
+<!-- 		     				<tr class="headerTables"> -->
+<!-- 			     				<td class="col-md-2" style="text-align:center; vertical-align: middle;">ID</td> -->
+<!-- 			     				<td class="col-md-4" style="text-align:center; vertical-align: middle;">Group</td> -->
+<!-- 			     			 	<td class="col-md-1" style="text-align:center; vertical-align: middle;">Assessor</td> -->
+<!-- 			     				<td class="" style="text-align:center; width:140px; vertical-align: middle;"></td> -->
+<!-- 			     			</tr> -->
+<!-- 			     		</thead> -->
+<!-- 	     			</table> -->
+				</div>
+
+	      <div class="modal-footer" style="margin-top: -30px;">
+	      <br>
+			<button class="btn btn-material-blue-700"  id="btnSummitAddQuestion" style="" onclick="onSummitAddQuestion();">Submit</button>
 	      </div>
 	    </div>
 	  </div>
 	</div>	
 <!-- --------------------------------------------------------------------------- -->
-
  	 	<!-- ----------------------------------delete-popup------------------------------------------------------------- -->
 <div id="delete-popup" class="modal fade" tabindex="-1">
   <div class="modal-dialog modal-sm">
@@ -171,14 +231,13 @@ String contextPath = request.getContextPath();
 	      </form>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-material-blue-700 btn-xs" data-dismiss="modal">Yes</button>
+        <button class="btn btn-material-blue-700 btn-xs" data-dismiss="modal" onclick="onYesDelete();">Yes</button>
         <button class="btn btn-material-grey-100 btn-xs" data-dismiss="modal">No</button>
       </div>
     </div>
   </div>
 </div>
 <!-- --------------------------------------------------------------------------- -->
-
 </body>
 </html>
 <script>
