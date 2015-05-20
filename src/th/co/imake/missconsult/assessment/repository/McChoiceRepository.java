@@ -21,13 +21,13 @@ public class McChoiceRepository {
 	
 	public Integer insertAll(McChoice mcChoice){
 		Integer record = 0;
-		   String sql = " \n INSERT INTO  mc_choice ( "
-				   +"  MC_ID ,  "
+		   String sql = " \n INSERT INTO  MC_CHOICE ( "
+//				   +"  MC_ID ,  "
 				   +"  MQ_ID ,  "
 				   +"  MC_SCORE ,  "
 				   +"  MC_TEXT  "
 				   +"  ) VALUES ( "
-				   +"  ?,  "
+//				   +"  ?,  "
 				   +"  ?,  "
 				   +"  ?,  "
 				   +"  ?) ";
@@ -35,7 +35,7 @@ public class McChoiceRepository {
 		   try{
 		   Query query = entityManager.createNativeQuery(sql);
 		   int i=1;
-		   query.setParameter(i++, mcChoice.getMcId());
+//		   query.setParameter(i++, mcChoice.getMcId());
 		   query.setParameter(i++, mcChoice.getMcQuestion().getMqId());
 		   query.setParameter(i++, mcChoice.getMcScore());
 		   query.setParameter(i++, mcChoice.getMcText());
@@ -54,7 +54,7 @@ public class McChoiceRepository {
 				+ " ,MQ_ID \n"
 				+ " ,MC_SCORE \n"
 				+ " ,MC_TEXT \n"
-				+ " FROM mc_choice \n"
+				+ " FROM MC_CHOICE \n"
 				+ " WHERE \n"
 				+ " MQ_ID=? \n";
 		System.out.println(sql);
@@ -71,7 +71,7 @@ public class McChoiceRepository {
 				+ " ,MQ_ID \n"
 				+ " ,MC_SCORE \n"
 				+ " ,MC_TEXT \n"
-				+ " FROM mc_choice \n"
+				+ " FROM MC_CHOICE \n"
 				+ " WHERE \n"
 				+ " MC_ID=? \n";
 		System.out.println(sql);
@@ -85,7 +85,7 @@ public class McChoiceRepository {
 	
 	public Integer DeleteByMcId(Integer mcid){
 		String sql = "\n DELETE "
-				+ " FROM mc_choice \n"
+				+ " FROM MC_CHOICE \n"
 				+ " WHERE \n"
 				+ " MC_ID=? \n";
 		Integer record = 0;
@@ -102,7 +102,7 @@ public class McChoiceRepository {
 	
 	public Integer update(McChoice mcChoice){
 		String sql = "\n UPDATE "
-				+ "  mc_choice \n"
+				+ "  MC_CHOICE \n"
 				+ " SET \n"
 				+ " MC_ID=?"
 				+ " ,MQ_ID=?"

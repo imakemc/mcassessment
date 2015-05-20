@@ -20,7 +20,7 @@ public class McDegreeGroupRepository  {
 	
 	public List<McDegreeGroup> getAllByDegreeId(Integer DegreeId) {
 		List<McDegreeGroup> result ;
-		String sql = "SELECT * FROM mc_degree_group WHERE 1=1 ";
+		String sql = "SELECT * FROM MC_DEGREE_GROUP WHERE 1=1 ";
 		if(DegreeId != null)
 			sql+= " AND MD_ID="+DegreeId ;
 		Query qry = entityManager.createNativeQuery(sql, McDegreeGroup.class);
@@ -30,7 +30,7 @@ public class McDegreeGroupRepository  {
 	
 	public List<McDegreeGroup> getAllByDegreeGroupId(Integer degreeGroupId) {
 		List<McDegreeGroup> result ;
-		String sql = "SELECT * FROM mc_degree_group WHERE 1=1 ";
+		String sql = "SELECT * FROM MC_DEGREE_GROUP WHERE 1=1 ";
 		if(degreeGroupId != null)
 			sql+= " AND MDG_ID="+degreeGroupId ;
 		Query qry = entityManager.createNativeQuery(sql, McDegreeGroup.class);
@@ -42,7 +42,7 @@ public class McDegreeGroupRepository  {
 		Integer result =0;
 		try{
 			String sql = " INSERT INTO  "+
-					" mc_degree_group ( "+ 
+					" MC_DEGREE_GROUP ( "+ 
 //					" MDG_ID, "+
 					" MD_ID, " +
 					" MDG_NAME, " +
@@ -66,7 +66,7 @@ public class McDegreeGroupRepository  {
 		Integer result =0;
 		try{
 			String sql = " UPDATE   "+
-					" mc_degree_group "+
+					" MC_DEGREE_GROUP "+
 					" SET  "+ 
 //					" MDG_ID, "+
 					" MD_ID = "+degreeGroup.getMcdegree().getMdId()+", " +
@@ -88,7 +88,7 @@ public class McDegreeGroupRepository  {
 		Integer result =0;
 		try{
 			String sql = " DELETE  FROM "+
-					" mc_degree_group "+
+					" MC_DEGREE_GROUP "+
 					 "WHERE "+
 					" MDG_ID =" +degreeGroup.getMdgId() ;
 			System.out.println(sql);
