@@ -99,9 +99,10 @@ function getDegreeGroup(data){
 	if(data==null)
 		return result;
 	for(var i=0 ;i<data.length;i++){
-		result +=data[i].mdgName+"("+data[i].mdgAssessor+") ";
+		result +=data[i].mdgName+"("+data[i].mdgAssessor+") ,";
 //		result +=data[i].mdgName+"("+(data[i].mdgAssessor==null)?0:data[i].mdgAssessor+") ";
 	}
+	result = result.substring(0,result.length-1)
 	console.log("getDegreeGroup : "+result);
 	return result;
 }

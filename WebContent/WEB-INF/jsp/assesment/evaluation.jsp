@@ -191,6 +191,10 @@ String contextPath = request.getContextPath();
 				     			</tr>
 				     		</thead>		
 		                </table>
+		                <div>
+		                <button class="btn btn-material-blue-600" id="btnAddChoice" style="padding: 2% 2%;" onclick="onClickAddChoice();" >Add Choice</button>
+		                <button class="btn btn-material-blue-600" id="btnDeleteChoice" style="padding: 2% 2%;" onclick="onClickDeleteChoice();" disabled>Delete Choice</button>
+		                </div>
 		            </div>
 	        	</div>
 
@@ -247,4 +251,4 @@ $(document).ready(function() {
 	console.log("contextPath : "+contextPath);
 });
 </script>
-<script type="text/javascript" src="<c:url value='/resources/js/mcassessment/assessment/evaluation.js'/>"></script>
+<script type="text/javascript"  charset="utf-8" src="<c:url value='/resources/js/mcassessment/assessment/evaluation.js'/>"></script>

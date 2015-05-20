@@ -9,14 +9,14 @@ $(document).ready(function() {
 	loadEvaluation();
 	init();
 //  //called when key is pressed in textbox
-  $("#input-number1").keypress(function (e) {
-     //if the letter is not digit then display error and don't type anything
-     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-        //display error message
-//        $("#errmsg").html("Digits Only").show().fadeOut("slow");
-               return false;
-    }
-   });
+//  $("#input-number1").keypress(function (e) {
+//     //if the letter is not digit then display error and don't type anything
+//     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+//        //display error message
+////        $("#errmsg").html("Digits Only").show().fadeOut("slow");
+//               return false;
+//    }
+//   });
 	
 });
 		// alert("xx");
@@ -25,11 +25,21 @@ $(document).ready(function() {
 function init(){
 	
 	$('#choiceTable').dataTable({
-		"bsort":false,
+		"bsort":true,
 		"bInfo":false,
 		"bPaginate":false,
 		"bFilter":false
 	});
+	
+    var table = $('#choiceTable').DataTable();
+    
+    $('#choiceTable tbody').on( 'click', 'td', function () {
+        $(this).toggleClass('selected');
+    } );
+ 
+    $('#button').click( function () {
+        alert( table.rows('.selected').data().length +' row(s) selected' );
+    } );
 	
 }
 
@@ -207,6 +217,56 @@ function onEditQ(mqId,type){
 	console.log("Question id : "+idVal);
 	console.log("Eval id : "+evalId);
 	
+	// clearFrom
+	$("#QThai").val("");
+	$("#QEng").val("");
+	var table = $("#choiceTable").dataTable(); 
+	table.fnClearTable();
+	
+	
+	var path = contextPath+"/evaluation/ajaxGetAllQuestionAndChoices";
+	console.log('path : '+path);
+	$.ajax({
+		method: "POST",
+		url : path,
+//		traditional: true,
+		data : {
+			mqId : idVal,
+			},
+		cache : false,
+		dataType : "json",
+		async : true,
+	    "success": function(data){
+		console.log(data);
+		if(data!=null && data.length>0){
+			setQuestionFromPopup(data[0]);
+		}else{
+			alert("save faile!!!");
+		}
+	},
+	"error" : function(xhr, status, error) {
+		  console.log(arguments);	
+		  alert(error);
+		  alert(xhr.responseText);
+		}
+	});
+	
+}
+
+function setQuestionFromPopup(data){
+	var mcQuestion = data.mcQuestion;
+	var McChoice  = data.McChoice;
+	$("#QThai").val(mcQuestion.mqNameThai);
+	$("#QEng").val(mcQuestion.maNameEng);
+	var table = $("#choiceTable").dataTable(); 
+	for (var i = 0; i < McChoice.length; i++) {
+		var element = McChoice[i];
+		table.fnAddData([
+		                 "<div><input type='checkbox' id='chk"+i+"' name='vehicle' onClick='onChkChoiceClick();' value=null>"
+		                 +"<input id='mcText"+i+"' name='input-number1' value='"+(element.mcText)+"' style='width: 70%'  class='form-control numeric-x' ></div>",
+		                 "<input id='mcScore"+i+"' name='input-number1' value='"+(element.mcScore)+"' type='number' style='width: 100%' class='form-control numeric-x' data-bind='value:replyNumber'>"
+		                 ]);
+	}
 }
 
 function loadEvaluationValue(evalId){
@@ -351,8 +411,9 @@ function addChoices(){
 	var table = $('#choiceTable').dataTable();
 	var length = table.fnGetData().length;
 	table.fnAddData([
-	                 (length+1),
-	                 "<input id='input-number"+length+"' name='input-number1' value='"+length+"' type='number' class='form-control numeric-x' data-bind='value:replyNumber'>"
+	                 "<div><input type='checkbox' id='chk"+length+"' name='vehicle' onClick='onChkChoiceClick();' value=null>"
+	                 +"<input id='mcText"+length+"' name='input-number1' value='"+(length+1)+"' style='width: 70%'  class='form-control numeric-x' ></div>",
+	                 "<input id='mcScore"+length+"' name='input-number1' value='"+length+"' type='number' style='width: 100%' class='form-control numeric-x' data-bind='value:replyNumber'>"
 	                 ]);
 }
 
@@ -360,9 +421,101 @@ function onSummitAddQuestion(){
 	saveQuetion();
 	
 }
+function onChkChoiceClick(){
+	var indexs= chkBoxChecked();
+	if(indexs!=null && indexs.length>0){
+		$("#btnDeleteChoice").prop("disabled",false);
+	}else{
+		$("#btnDeleteChoice").prop("disabled",true);
+	}
+}
+
+function chkBoxChecked(){
+	var index=0;
+	var indexs = [];
+	$("input:checkbox[name=vehicle]").each(function () {
+		if($(this).is( ":checked" )){
+			console.log("##@index : "+index+" is true");
+			indexs.push(index);
+		}
+//		console.log("##@index : "+index+" : "+$(this).is( ":checked" ));
+//	    alert($(this).is( ":checked" ) );
+		index++;
+	});
+	return indexs;
+}
+
+function saveChoice(){
+	var Choices = [];
+	var table = $("#choiceTable").dataTable();
+	var datas = table.fnGetData();
+		console.log(datas);
+		for (var i = 0; i < datas.length; i++) 
+		{
+			var Choice = [];
+			var data = datas[i];
+			var mcId = null;
+			var mcText = $("#"+$(data[0]).find(".form-control").get(0).id).val();
+			var mcScore = $("#"+$(data[1]).get(0).id).val();
+			Choice.push(mcId);
+			Choice.push(mcText);
+			Choice.push(mcScore);
+			console.log(i+". "+mcText + "  " +mcScore);
+			Choices.push(Choice);
+		}
+	console.log(idVal);
+	var path = contextPath+"/evaluation/ajaxAddEditChoices";
+	console.log('path : '+path);
+	$.ajax({
+		method: "POST",
+		url : path,
+		traditional: true,
+		data : {
+			choices : Choices,
+			questionId : idVal
+			},
+		cache : false,
+		dataType : "json",
+		async : true,
+	    "success": function(data){
+		console.log(data);
+//		if(data!=null && data.length>0 && data[0].id>-1){
+//			idVal=data[0].id;
+//			console.log("save Question id : "+idVal);
+//		}else{
+//			alert("save faile!!!");
+//		}
+	},
+	"error" : function(xhr, status, error) {
+		  console.log(arguments);	
+		  alert(error);
+		  alert(xhr.responseText);
+		}
+	});
+	
+}
+
+function onClickAddChoice(){
+	console.log("##@onClickAddChoice");
+	addChoices();
+}
+function onClickDeleteChoice(){
+	console.log("##@onClickDeleteChoice");
+	var table = $("#choiceTable").dataTable();
+	var indexs= chkBoxChecked();
+	for(var i=indexs.length-1;i>=0;i--){
+		var buf = table.fnGetData(indexs[i]);
+		console.log(buf);
+		console.log($(buf[1]).val());
+		table.fnDeleteRow(indexs[i]);
+	}
+	
+}
 
 function onAddQuetionClick(){
 	$("#btnSummitAddQuestion").text('Add');
+	$("#QThai").val("");
+	$("#QEng").val("");
 	idVal = null;
 	console.log("Question id : "+idVal);
 	console.log("Eval id : "+evalId);
@@ -388,19 +541,20 @@ function saveQuetion(){
 //	var evalId = evalId;
 	
 	
+	console.log('idVal : '+idVal);
 	console.log('path : '+path);
 	$.ajax({
+		method: "POST",
 		url : path,
 		data : {
 			id : id,
 			evalId : evalId,
-			qthai : decodeURI(QThai.val()),
+			qthai : QThai.val(),
+//			qthai : decodeURI(QThai.val()),
 			qeng : QEng.val(),
 			type: idType
 			},
 		cache : false,
-//		contentType: "application/json; charset=utf-8",
-		contentType: "application/x-www-form-urlencoded",
 		dataType : "json",
 		async : true,
 	    "success": function(data){
