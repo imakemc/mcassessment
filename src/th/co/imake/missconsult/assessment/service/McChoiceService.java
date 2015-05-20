@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.dao.DataAccessException;
 
 import th.co.aoe.makedev.missconsult.xstream.common.Paging;
+import th.co.imake.missconsult.assessment.domain.McChoice;
 
 
 public interface McChoiceService {
@@ -20,8 +21,12 @@ public interface McChoiceService {
 	public  List searchMissAccount(MissAccount persistentInstance,String maContactName,String[] meIds,	Pagging pagging)throws DataAccessException  ;
 	*/
 	public Integer saveMcChoice(th.co.imake.missconsult.assessment.domain.McChoice mcChoice);
-	public int updateMcChoice(th.co.imake.missconsult.assessment.domain.McChoice mcChoice); 
-	public int deleteMcChoice(th.co.imake.missconsult.assessment.domain.McChoice mcChoice); 
-	public th.co.imake.missconsult.assessment.domain.McChoice findMcChoiceById(Integer mcId);
-	public  List searchMcChoice(th.co.imake.missconsult.assessment.domain.McChoice  mcChoice,Paging paging);
+//	public int updateMcChoice(th.co.imake.missconsult.assessment.domain.McChoice mcChoice); 
+//	public th.co.imake.missconsult.assessment.domain.McChoice findMcChoiceById(Integer mcId);
+//	public  List searchMcChoice(th.co.imake.missconsult.assessment.domain.McChoice  mcChoice,Paging paging);
+	public int updateMcChoiceByMcid(List<McChoice> mcChoiceList);
+	public int deleteMcChoice(List<McChoice> mcChoiceList);
+	public McChoice findMcChoiceByMcId(Integer mcId);
+	public List<th.co.imake.missconsult.assessment.model.McChoiceM> findMcChoiceByMqId(Integer mqid);
+	public int updateAddMcChoice(String[][] choices,String questionId);
 }
