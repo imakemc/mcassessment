@@ -27,7 +27,7 @@ public class McEvaluationRepository {
 //				+ " ,mcdg.MDG_ID "
 //				+ " ,mcdg.MDG_NAME "
 //				+ " ,mcdg.MDG_ASSESSOR "
-				+ " FROM mc_evaluation ";
+				+ " FROM MC_EVALUATION ";
 		System.out.println(sql);
 		Query query = entityManager.createNativeQuery(sql,McEvaluation.class);
 		 List<McEvaluationM>  list = (List<McEvaluationM>) query.getResultList();
@@ -37,7 +37,7 @@ public class McEvaluationRepository {
 	public Integer insertAll(McEvaluation evaluation){
 		Integer id =  -1;
 		String sql = "INSERT INTO "
-				+ " mc_evaluation ( "
+				+ " MC_EVALUATION ( "
 //				+ " ME_ID, "
 				+ " ME_NAME,  "
 				+ " MC_EVALUATIONcol, "

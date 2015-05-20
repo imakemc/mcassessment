@@ -24,7 +24,6 @@ public class McDegreeServiceImpl implements McDegreeService {
 	private McDegree initObjectDomain() {
 		return new McDegree();
 	}
-
 	private McDegreeM initObjectDTO() {
 		return new McDegreeM();
 	}

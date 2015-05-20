@@ -17,7 +17,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="MC_SERIES")
-@NamedQuery(name="McSery.findAll", query="SELECT m FROM McSery m")
 public class McSeries implements Serializable {
 	private static final long serialVersionUID = 1L;
 

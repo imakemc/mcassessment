@@ -34,8 +34,8 @@ public class McDegreeRepository {
 				+ " ,mcdg.MDG_ID "
 				+ " ,mcdg.MDG_NAME "
 				+ " ,mcdg.MDG_ASSESSOR "
-				+ " FROM mc_degree mcd "
-				+ " ,mc_degree_group mcdg "
+				+ " FROM MC_DEGREE mcd "
+				+ " ,MC_DEGREE_GROUP mcdg "
 				+ " WHERE "
 				+ " mcd.MD_ID=mcdg.MD_ID";
 		Query query = entityManager.createNativeQuery(sql);
