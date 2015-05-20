@@ -42,7 +42,7 @@ public class McDegreeGroupRepository  {
 		Integer result =0;
 		try{
 			String sql = " INSERT INTO  "+
-					" MC_DEGREE_GROUP ( "+
+					" MC_DEGREE_GROUP ( "+ 
 //					" MDG_ID, "+
 					" MD_ID, " +
 					" MDG_NAME, " +

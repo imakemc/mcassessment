@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import th.co.imake.missconsult.assessment.domain.McEvaluation;
 import th.co.imake.missconsult.assessment.domain.McQuestion;
+import th.co.imake.missconsult.assessment.model.McChoiceM;
 import th.co.imake.missconsult.assessment.model.McEvaluationM;
 import th.co.imake.missconsult.assessment.model.McQuestionM;
+import th.co.imake.missconsult.assessment.service.McChoiceService;
 import th.co.imake.missconsult.assessment.service.McEvaluationService;
 import th.co.imake.missconsult.assessment.service.McQuestionService;
 
@@ -33,6 +35,9 @@ public class EvaluationController {
 	
 	@Autowired
 	private McQuestionService mcQuestionService;
+	
+	@Autowired
+	private McChoiceService  mcChoiceService;
 	
 	 @RequestMapping(value={"/list"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
 	    public String list(Model model, @RequestParam(value="pageNo", required=false) String pageNoStr)
@@ -66,6 +71,12 @@ public class EvaluationController {
 		List<McQuestionM>  ajaxGetQuestionAll(@RequestParam Integer meid) {
 			System.out.println("meid : "+meid);
 			List<McQuestionM> list =  mcQuestionService.selectAllByMeId(meid);
+//			List<McChoiceM> choiceMs = mcChoiceService.findMcChoiceByMqId(list.get(0).getMqId());
+//			List<Map<String, Object>> result = new ArrayList<Map<String,Object>>();
+//			Map<String, Object> map = new HashMap<String, Object>();
+//			map.put("McQuestion", list);
+//			map.put("McChoice", choiceMs);
+//			result.add(map);
 			return list;
 		}
 		
@@ -109,7 +120,7 @@ public class EvaluationController {
 			return list;
 		}
 		
-		@RequestMapping(value = "/ajaxAddEditQuestion", method = RequestMethod.GET)
+		@RequestMapping(value = "/ajaxAddEditQuestion", method = RequestMethod.POST)
 		public @ResponseBody
 		List<Map<String, Integer>>  ajaxAddEditQuestion(@RequestParam Integer id,Integer evalId,String qthai, String qeng,String type) {
 			System.out.println("id : "+id);
@@ -121,8 +132,9 @@ public class EvaluationController {
 			McQuestion mcQuestion = new McQuestion();
 			mcQuestion.setMaNameEng(qeng);
 			try {
-				mcQuestion.setMqNameThai(URLDecoder.decode(qthai, "UTF-8"));
-			} catch (UnsupportedEncodingException e) {
+				mcQuestion.setMqNameThai(qthai);
+//				MCQUESTION.SETMQNAMETHAI(URLDECODER.DECODE(QTHAI, "UTF-8"));
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -137,7 +149,7 @@ public class EvaluationController {
 				
 			}else{
 				System.out.println("Edit Question");
-				
+				id = mcQuestionService.updateByMqId(mcQuestion);
 			}
 					
 			
@@ -153,4 +165,50 @@ public class EvaluationController {
 			return list;
 		}
 		
+		
+		@RequestMapping(value = "/ajaxAddEditChoices", method = RequestMethod.POST)
+		public @ResponseBody
+		List<Map<String, Integer>>  ajaxAddEditChoices(@RequestParam(value="choices", required=false) String[][] choices ,@RequestParam String questionId) {
+			System.out.println("Choices : "+choices);
+//			Integer record =  mcQuestionService.deleteByMqId(id);
+			Integer record =  mcChoiceService.updateAddMcChoice(choices,questionId);
+			List<Map<String, Integer>> list = new ArrayList<Map<String,Integer>>();
+			Map<String, Integer> maps = new HashMap<String, Integer>();
+//			maps.put("record", record);
+			maps.put("record", 0);
+			list.add(maps);
+			return list;
+		}
+		
+		@RequestMapping(value = "/ajaxGetAllQuestionAndChoices", method = RequestMethod.POST)
+		public @ResponseBody
+		List<Map<String, Object>>  ajaxGetAllQuestionAndChoices(@RequestParam Integer mqId ) {
+			System.out.println("mqId : "+mqId);
+//			System.out.println("mcId : "+mcId);
+			
+			McQuestionM mcQuestionM = mcQuestionService.selectAllByMqId(mqId);
+			List<McChoiceM> choices = mcChoiceService.findMcChoiceByMqId(mqId);
+			List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
+			Map<String, Object> maps = new HashMap<String, Object>();
+			maps.put("mcQuestion", mcQuestionM);
+			maps.put("McChoice", choices);
+//			maps.put("record", 0);
+			list.add(maps);
+			return list;
+		}
+//		
+//		
+//		@RequestMapping(value = "/ajaxAddEditChoices", method = RequestMethod.POST)
+//		public @ResponseBody
+//		List<Map<String, Integer>>  ajaxAddEditChoices(@RequestParam String choices ) {
+//			System.out.println("Choices : "+choices);
+////			Integer record =  mcQuestionService.deleteByMqId(id);
+//			List<Map<String, Integer>> list = new ArrayList<Map<String,Integer>>();
+//			Map<String, Integer> maps = new HashMap<String, Integer>();
+////			maps.put("record", record);
+//			maps.put("record", 0);
+//			list.add(maps);
+//			return list;
+//		}
 }
+

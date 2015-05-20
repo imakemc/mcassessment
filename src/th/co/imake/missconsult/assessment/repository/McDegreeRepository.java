@@ -29,15 +29,15 @@ public class McDegreeRepository {
 		return list;
 	}
 	public List<McDegreeM> selectAllGroup() {
-		String sql = " SELECT mcd.MD_ID"
-				+ " ,mcd.MD_NAME"
-				+ " ,mcdg.MDG_ID "
-				+ " ,mcdg.MDG_NAME "
-				+ " ,mcdg.MDG_ASSESSOR "
-				+ " FROM MC_DEGREE mcd "
-				+ " ,MC_DEGREE_GROUP mcdg "
+		String sql = " SELECT MCD.MD_ID"
+				+ " ,MCD.MD_NAME"
+				+ " ,MCDG.MDG_ID "
+				+ " ,MCDG.MDG_NAME "
+				+ " ,MCDG.MDG_ASSESSOR "
+				+ " FROM MC_DEGREE MCD "
+				+ " ,MC_DEGREE_GROUP MCDG "
 				+ " WHERE "
-				+ " mcd.MD_ID=mcdg.MD_ID";
+				+ " MCD.MD_ID=MCDG.MD_ID";
 		Query query = entityManager.createNativeQuery(sql);
 //		List<McDegree> users = (List<McDegree>) query.getResultList();
 		List<McDegreeM> list =(List<McDegreeM>) query.getResultList();

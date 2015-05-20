@@ -14,5 +14,7 @@ public interface McEvaluationService {
 	public int deleteMcEvaluation(McEvaluationM mcEvaluationDTO);
 	public List searchMcEvaluation(McEvaluationM mcEvaluationDTO, Paging paging);
 	public Integer insertAll(McEvaluation evaluation);
+	List<McEvaluationM> selectByMdId(Integer mdid);
+	int deleteByMeid(Integer meid);
 	
 }

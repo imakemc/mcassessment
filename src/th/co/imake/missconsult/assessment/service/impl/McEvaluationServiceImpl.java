@@ -34,8 +34,14 @@ public class McEvaluationServiceImpl implements McEvaluationService{
 
 	@Override
 	public int deleteMcEvaluation(McEvaluationM mcEvaluationDTO) {
-		// TODO Auto-generated method stub
+		
 		return 0;
+	}
+	
+	@Override
+	public int deleteByMeid(Integer meid) {
+		
+		return mcEvaluationRepository.deleteByMeId(meid);
 	}
 
 	@Override
@@ -49,6 +55,10 @@ public class McEvaluationServiceImpl implements McEvaluationService{
 		Integer id = mcEvaluationRepository.insertAll(evaluation);
 //			Integer id = mcEvaluationRepository.getLastId();
 		return id;
+	}
+	@Override
+	public List<McEvaluationM> selectByMdId(Integer mdid){
+		return mcEvaluationRepository.selectByMdId(mdid);
 	}
 } 
 
