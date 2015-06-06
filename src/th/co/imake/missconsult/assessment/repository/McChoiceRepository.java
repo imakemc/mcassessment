@@ -104,9 +104,9 @@ public class McChoiceRepository {
 		String sql = "\n UPDATE "
 				+ "  MC_CHOICE \n"
 				+ " SET \n"
-				+ " MC_ID=?"
-				+ " ,MQ_ID=?"
-				+ " ,MC_SCORE =?"
+//				+ " MC_ID=?"
+				+ " MQ_ID=? \n"
+				+ " ,MC_SCORE =? \n"
 				+ " ,MC_TEXT=? \n"
 				+ " WHERE \n"
 				+ " MC_ID=? \n";
@@ -115,10 +115,11 @@ public class McChoiceRepository {
 		try{
 			Query query = entityManager.createNativeQuery(sql);
 			int i=1;
-			query.setParameter(i++, mcChoice.getMcId());
+//			query.setParameter(i++, mcChoice.getMcId());
 			query.setParameter(i++, mcChoice.getMcQuestion().getMqId());
 			query.setParameter(i++, mcChoice.getMcScore());
 			query.setParameter(i++, mcChoice.getMcText());
+			query.setParameter(i++, mcChoice.getMcId());
 			record = query.executeUpdate();
 		}catch(Exception ex){
 			ex.printStackTrace();
