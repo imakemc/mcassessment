@@ -186,6 +186,7 @@ String contextPath = request.getContextPath();
 		                <table id="choiceTable" class="table tb table-hover border"style="margin-bottom: 15px;">
 		                	<thead>
 			     				<tr class="headerTables">
+				     				<td class="col-md-2">Id</td>
 				     				<td class="col-md-2">Order</td>
 				     				<td class="col-md-2">Score</td>
 				     			</tr>
