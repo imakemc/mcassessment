@@ -1,5 +1,6 @@
 package th.co.imake.missconsult.assessment.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +67,20 @@ public class McChoiceServiceImpl implements McChoiceService{
 		}
 		return success;
 	}
-
+	
+	@Override
+	public int deleteMcChoiceAll(String[][] choicesDelete) {
+		Integer record =0;
+		try{
+		for (String[] strings : choicesDelete) {
+			record+=mcChoiceRepository.DeleteByMcId(Integer.parseInt(strings[0]));
+		}
+		}catch(Exception exception){
+			exception.printStackTrace();
+		}
+		return record;
+	}
+	
 	@Override
 	public McChoice findMcChoiceByMcId(Integer mcId) {
 		return mcChoiceRepository.selectByMcId(mcId);
@@ -85,7 +99,7 @@ public class McChoiceServiceImpl implements McChoiceService{
 			 mcChoice = new McChoice();
 			 McQuestion mcQuestion = new McQuestion();
 			 String[] choice = choices[i];
-			 if(null==choice[0] || "".equalsIgnoreCase(choice[0].trim())){
+			 if(null==choice[0] || "x".equalsIgnoreCase(choice[0].trim()) || "".equalsIgnoreCase(choice[0].trim())){
 				 System.out.println("##Add new  Choice qid : "+ questionId);
 				 mcChoice.setMcScore(Integer.parseInt(choice[2]));
 				 mcChoice.setMcText(choice[1]);
@@ -98,13 +112,12 @@ public class McChoiceServiceImpl implements McChoiceService{
 				 mcChoice.setMcScore(Integer.parseInt(choice[2]));
 				 mcChoice.setMcText(choice[1]);
 				 mcQuestion.setMqId(Integer.parseInt(questionId));
+				 mcChoice.setMcQuestion(mcQuestion);
 				 record += mcChoiceRepository.update(mcChoice);
 			 }
 			
 		}
 		return record;
 	}
-
-
 
 }
