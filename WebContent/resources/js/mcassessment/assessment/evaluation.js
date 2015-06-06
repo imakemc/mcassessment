@@ -29,6 +29,7 @@ function init(){
 		"bInfo":false,
 		"bPaginate":false,
 		"bFilter":false
+//		"order": [[ 0, "desc" ]]
 	});
 	
     var table = $('#choiceTable').DataTable();
@@ -213,6 +214,8 @@ function saveEvaluationTable(){
 
 function onEditQ(mqId,type){
 	idVal = mqId;
+	deleteChoces = [];
+	onChkChoiceClick();
 	$("#btnSummitAddQuestion").text('Edit');
 	console.log("Question id : "+idVal);
 	console.log("Eval id : "+evalId);
@@ -261,7 +264,7 @@ function setQuestionFromPopup(data){
 	var table = $("#choiceTable").dataTable(); 
 	for (var i = 0; i < McChoice.length; i++) {
 		var element = McChoice[i];
-		table.fnAddData([
+		table.fnAddData([element.mcId,
 		                 "<div><input type='checkbox' id='chk"+i+"' name='vehicle' onClick='onChkChoiceClick();' value=null>"
 		                 +"<input id='mcText"+i+"' name='input-number1' value='"+(element.mcText)+"' style='width: 70%'  class='form-control numeric-x' ></div>",
 		                 "<input id='mcScore"+i+"' name='input-number1' value='"+(element.mcScore)+"' type='number' style='width: 100%' class='form-control numeric-x' data-bind='value:replyNumber'>"
@@ -317,6 +320,7 @@ function loadEvaluationValue(evalId){
 function onAddEvalClick(){
 //	console.log("");
 	$('#t2').hide();
+	setPanalTabActive("pane1");
 	evalId =null;
 	$("#evalName").val("");
 	$("#introduction").val("");
@@ -327,6 +331,7 @@ function onAddEvalClick(){
 function editEvaluation(meID,meName,type){
 	console.log("meID,meName,type : "+meID+"  "+meName+"   "+type);
 	$('#t2').show();
+	setPanalTabActive("pane1");
 	evalId=meID;
 	generateTbChoices()
 	if("edit"==type){
@@ -410,7 +415,12 @@ function generateTbChoices(){
 function addChoices(){
 	var table = $('#choiceTable').dataTable();
 	var length = table.fnGetData().length;
-	table.fnAddData([
+//	table.row.add(["",
+//	                 "<div><input type='checkbox' id='chk"+length+"' name='vehicle' onClick='onChkChoiceClick();' value=null>"
+//	                 +"<input id='mcText"+length+"' name='input-number1' value='"+(length+1)+"' style='width: 70%'  class='form-control numeric-x' ></div>",
+//	                 "<input id='mcScore"+length+"' name='input-number1' value='"+length+"' type='number' style='width: 100%' class='form-control numeric-x' data-bind='value:replyNumber'>"
+//	                 ]).draw();;
+	table.fnAddData(["x",
 	                 "<div><input type='checkbox' id='chk"+length+"' name='vehicle' onClick='onChkChoiceClick();' value=null>"
 	                 +"<input id='mcText"+length+"' name='input-number1' value='"+(length+1)+"' style='width: 70%'  class='form-control numeric-x' ></div>",
 	                 "<input id='mcScore"+length+"' name='input-number1' value='"+length+"' type='number' style='width: 100%' class='form-control numeric-x' data-bind='value:replyNumber'>"
@@ -449,14 +459,16 @@ function saveChoice(){
 	var Choices = [];
 	var table = $("#choiceTable").dataTable();
 	var datas = table.fnGetData();
+	var btnSummitFlag = $("#btnSummitAddQuestion").text();
 		console.log(datas);
 		for (var i = 0; i < datas.length; i++) 
 		{
 			var Choice = [];
 			var data = datas[i];
-			var mcId = null;
-			var mcText = $("#"+$(data[0]).find(".form-control").get(0).id).val();
-			var mcScore = $("#"+$(data[1]).get(0).id).val();
+//			var mcId = null;
+			var mcId = data[0];
+			var mcText = $("#"+$(data[1]).find(".form-control").get(0).id).val();
+			var mcScore = $("#"+$(data[2]).get(0).id).val();
 			Choice.push(mcId);
 			Choice.push(mcText);
 			Choice.push(mcScore);
@@ -472,13 +484,19 @@ function saveChoice(){
 		traditional: true,
 		data : {
 			choices : Choices,
-			questionId : idVal
+			questionId : idVal,
+			choicesDelete : deleteChoces
+//			flag : btnSummitFlag
 			},
 		cache : false,
 		dataType : "json",
 		async : true,
 	    "success": function(data){
 		console.log(data);
+		deleteChoces=[];
+		//reloadQuesion
+		loadEvaluationValue(evalId);
+	 	loadQuestion(evalId);
 //		if(data!=null && data.length>0 && data[0].id>-1){
 //			idVal=data[0].id;
 //			console.log("save Question id : "+idVal);
@@ -499,6 +517,7 @@ function onClickAddChoice(){
 	console.log("##@onClickAddChoice");
 	addChoices();
 }
+var deleteChoces =[];
 function onClickDeleteChoice(){
 	console.log("##@onClickDeleteChoice");
 	var table = $("#choiceTable").dataTable();
@@ -506,10 +525,22 @@ function onClickDeleteChoice(){
 	for(var i=indexs.length-1;i>=0;i--){
 		var buf = table.fnGetData(indexs[i]);
 		console.log(buf);
+		if("x"!=buf[0]){
+			var Choice = [];
+//			var data = buf[i];
+			var mcId = buf[0];
+			var mcText = $("#"+$(buf[1]).find(".form-control").get(0).id).val();
+			var mcScore = $("#"+$(buf[2]).get(0).id).val();
+			Choice.push(mcId);
+			Choice.push(mcText);
+			Choice.push(mcScore);
+			console.log(i+". "+mcText + "  " +mcScore);
+			deleteChoces.push(Choice);
+		}
 		console.log($(buf[1]).val());
 		table.fnDeleteRow(indexs[i]);
 	}
-	
+	onChkChoiceClick();
 }
 
 function onAddQuetionClick(){
@@ -517,6 +548,9 @@ function onAddQuetionClick(){
 	$("#QThai").val("");
 	$("#QEng").val("");
 	idVal = null;
+	deleteChoces = [];
+	generateTbChoices();
+	onChkChoiceClick();
 	console.log("Question id : "+idVal);
 	console.log("Eval id : "+evalId);
 }
@@ -562,6 +596,7 @@ function saveQuetion(){
 		if(data!=null && data.length>0 && data[0].id>-1){
 			idVal=data[0].id;
 			console.log("save Question id : "+idVal);
+			saveChoice();
 		}else{
 			alert("save faile!!!");
 		}
@@ -578,6 +613,15 @@ function saveQuetion(){
 		}
 	});
 	
+}
+
+function setPanalTabActive(idPanal){
+	$('.tab-pane').each(function(index ){
+		//$(this).attr('class','');
+		$(this).removeClass('active');
+
+		})
+		$('#'+idPanal).addClass('active');
 }
 
 //called when key is pressed in textbox
