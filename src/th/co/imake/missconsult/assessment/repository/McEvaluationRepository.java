@@ -110,6 +110,32 @@ public class McEvaluationRepository {
 		}
 		return id;
 	}
+	public Integer updateIntroNameByMeId(McEvaluation evaluation){
+		Integer count =  -1;
+		String sql = " UPDATE MC_EVALUATION   \n" +
+				" SET  \n" +
+//				" ME_ID = ME_ID ,   " +
+				" ME_NAME = ? ,   \n" +
+//				" MC_EVALUATIONcol = MC_EVALUATIONcol ,   " +
+				" MC_INTRO = ?  \n" +
+				" WHERE  \n" +
+				" ME_ID = ? \n";
+		try {
+			System.out.println(sql);
+			Query query = entityManager.createNativeQuery(sql);
+			int i =1;
+			query.setParameter(i++, evaluation.getMeName());
+//			query.setParameter(i++, evaluation.getMC_EVALUATIONcol());
+			query.setParameter(i++, evaluation.getMcIntro());
+			query.setParameter(i++, evaluation.getMeId());
+//			System.out.println(query.toString());
+			count = query.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
 	
 //	public Integer getLastId(){
 //		Integer count =  0;
