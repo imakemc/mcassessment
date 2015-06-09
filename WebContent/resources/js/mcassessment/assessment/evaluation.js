@@ -56,8 +56,7 @@ function loadEvaluation(){
                 "fnServerData": function ( sSource, aoData, fnCallback ) {
             $.ajax( {
                 "dataType": 'json',
-                'contentType': "application/json; charset=utf-8",
-                "type": "GET",
+                "type": "POST",
                 "url": sSource,
                 "async" : true,
                 "data": {organizationId : 'xxx'},
@@ -70,9 +69,9 @@ function loadEvaluation(){
                 	}
                 },
     			"error" : function(xhr, status, error) {
-  				  console.log(arguments);	
-  				  alert(error);
-  				  alert(xhr.responseText);
+//  				  console.log(arguments);	
+//  				  alert(error);
+//  				  alert(xhr.responseText);
   				}
             } );
         }
@@ -123,9 +122,8 @@ function loadQuestion(meId){
         "sAjaxSource": contextPath+"/evaluation/ajaxGetQuestionAll",
                 "fnServerData": function ( sSource, aoData, fnCallback ) {
             $.ajax( {
-            	'contentType': "application/json; charset=utf-8",
                 "dataType": 'json',
-                "type": "GET",
+                "type": "POST",
                 "url": sSource,
                 "async" : true,
                 "data": {meid : meId},
@@ -140,8 +138,8 @@ function loadQuestion(meId){
                 },
     			"error" : function(xhr, status, error) {
   				  console.log(arguments);	
-  				  alert(error);
-  				  alert(xhr.responseText);
+//  				  alert(error);
+//  				  alert(xhr.responseText);
   				}
             } );
         }
@@ -177,25 +175,29 @@ function  setQuestionTable(data){
 function saveEvaluationTable(){
 	console.log('saveEvaluationTable');
 	var path = contextPath+"/evaluation/ajaxSaveAndGetIdEvaluation";
+	$('#summitInfo').prop("disabled",true);
 	var evalNameP = $("#evalName").val();
 	var evalIntroP = $("#introduction").val();
 	$.ajax({
 		url : path,
-		contentType: "application/json; charset=utf-8",
 		data : {
 			 evalName : evalNameP
 			,evalIntro : evalIntroP
+			,evaId : evalId
 			},
 		cache : false,
+		method: "POST",
 		dataType : "json",
 		async : false,
 	  "success": function(data){
 		console.log(data);
 		if(data!=null && data[0].id>=0){
-			evalId = data[0].id;
+			if(evalId==null){
+				evalId = data[0].id;
+				$('#t2').show();
+			}
 			loadEvaluation();
-			$('#t2').show();
-			
+			$('#summitInfo').prop("disabled",false);
 		}
 	},
 	"error" : function(xhr, status, error) {
@@ -204,9 +206,9 @@ function saveEvaluationTable(){
 //	    	$("#input-assessor").val("");
 //	    	$("#input-groupName").val("");
 //	    	$("#btnSummitDegreeGroup").text('Add');
-		  
-		  alert(error);
-		  alert(xhr.responseText);
+		  $('#summitInfo').prop("disabled",false);
+//		  alert(error);
+//		  alert(xhr.responseText);
 		}
 	});
 	
@@ -217,6 +219,7 @@ function onEditQ(mqId,type){
 	deleteChoces = [];
 	onChkChoiceClick();
 	$("#btnSummitAddQuestion").text('Edit');
+	$('#btnSummitAddQuestion').prop("disabled",false);
 	console.log("Question id : "+idVal);
 	console.log("Eval id : "+evalId);
 	
@@ -248,9 +251,9 @@ function onEditQ(mqId,type){
 		}
 	},
 	"error" : function(xhr, status, error) {
-		  console.log(arguments);	
-		  alert(error);
-		  alert(xhr.responseText);
+//		  console.log(arguments);	
+//		  alert(error);
+//		  alert(xhr.responseText);
 		}
 	});
 	
@@ -283,7 +286,7 @@ function loadEvaluationValue(evalId){
 			evalId : evalId
 			},
 		cache : false,
-		contentType: "application/json; charset=utf-8",
+		method: "POST",
 		dataType : "json",
 		async : true,
 	  "success": function(data){
@@ -300,8 +303,8 @@ function loadEvaluationValue(evalId){
 //	    	$("#input-groupName").val("");
 //	    	$("#btnSummitDegreeGroup").text('Add');
 		  
-		  alert(error);
-		  alert(xhr.responseText);
+//		  alert(error);
+//		  alert(xhr.responseText);
 		}
 	});
 	
@@ -331,6 +334,7 @@ function onAddEvalClick(){
 function editEvaluation(meID,meName,type){
 	console.log("meID,meName,type : "+meID+"  "+meName+"   "+type);
 	$('#t2').show();
+	$('#t2').removeClass('active');
 	setPanalTabActive("pane1");
 	evalId=meID;
 	generateTbChoices()
@@ -373,7 +377,7 @@ function deleteAjax(id){
 			},
 		cache : false,
 		dataType : "json",
-		contentType: "application/json; charset=utf-8",
+		method: "POST",
 		async : true,
 	  "success": function(data){
 		console.log(data);
@@ -394,8 +398,8 @@ function deleteAjax(id){
 //	    	$("#input-groupName").val("");
 //	    	$("#btnSummitDegreeGroup").text('Add');
 		  
-		  alert(error);
-		  alert(xhr.responseText);
+//		  alert(error);
+//		  alert(xhr.responseText);
 		}
 	});
 }
@@ -497,6 +501,7 @@ function saveChoice(){
 		//reloadQuesion
 		loadEvaluationValue(evalId);
 	 	loadQuestion(evalId);
+	 	 $('#btnSummitAddQuestion').prop("disabled",false);
 //		if(data!=null && data.length>0 && data[0].id>-1){
 //			idVal=data[0].id;
 //			console.log("save Question id : "+idVal);
@@ -505,9 +510,10 @@ function saveChoice(){
 //		}
 	},
 	"error" : function(xhr, status, error) {
-		  console.log(arguments);	
-		  alert(error);
-		  alert(xhr.responseText);
+//		  console.log(arguments);	
+//		  alert(error);
+//		  alert(xhr.responseText);
+		  $('#btnSummitAddQuestion').prop("disabled",false);
 		}
 	});
 	
@@ -545,6 +551,7 @@ function onClickDeleteChoice(){
 
 function onAddQuetionClick(){
 	$("#btnSummitAddQuestion").text('Add');
+	$('#btnSummitAddQuestion').prop("disabled",false);
 	$("#QThai").val("");
 	$("#QEng").val("");
 	idVal = null;
@@ -558,7 +565,7 @@ function onAddQuetionClick(){
 function saveQuetion(){
 	var QThai = $("#QThai");
 	var QEng = $("#QEng");
-	
+	$('#btnSummitAddQuestion').prop("disabled",true);
 	var path = contextPath;
 	var id =null;
 	var idType = $("#btnSummitAddQuestion").text();
@@ -584,7 +591,6 @@ function saveQuetion(){
 			id : id,
 			evalId : evalId,
 			qthai : QThai.val(),
-//			qthai : decodeURI(QThai.val()),
 			qeng : QEng.val(),
 			type: idType
 			},
@@ -597,19 +603,31 @@ function saveQuetion(){
 			idVal=data[0].id;
 			console.log("save Question id : "+idVal);
 			saveChoice();
+//			$('#btnSummitAddQuestion').prop("disabled",true);
+
+			if(idType=="Add"){
+				$("#btnSummitAddQuestion").text('Edit');
+			}
 		}else{
 			alert("save faile!!!");
+//			$('#btnSummitAddQuestion').prop("disabled",false);
+//			$("#btnSummitAddQuestion").text('Add');
+			$('#btnSummitAddQuestion').prop("disabled",false);
+			if(idType=="Add"){
+				$("#btnSummitAddQuestion").text('Add');
+			}
 		}
 	},
 	"error" : function(xhr, status, error) {
 		  console.log(arguments);	
-		  
 //	    	$("#input-assessor").val("");
 //	    	$("#input-groupName").val("");
 //	    	$("#btnSummitDegreeGroup").text('Add');
-		  
-		  alert(error);
-		  alert(xhr.responseText);
+//		  alert(error);
+//		  alert(xhr.responseText);
+//			$('#btnSummitAddQuestion').prop("disabled",false);
+//			$("#btnSummitAddQuestion").text('Add');
+		  $('#btnSummitAddQuestion').prop("disabled",false);
 		}
 	});
 	

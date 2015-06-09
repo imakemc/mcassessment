@@ -3,10 +3,7 @@
 <jsp:include page="../header.jsp" />
 <%-- <script type="text/javascript" src="<c:url value='/resources/js/mcassessment/assessment/degreeGoup.js'/>"></script> --%>
 <%-- <%@ include file="/WEB-INF/jsp/header.jsp"%> --%>
-<%
-String contextPath = request.getContextPath();
-%>
-</head>
+
 <body>
 	<jsp:include page="../headerNavi.jsp" />
 	<div class="paperContent container">
@@ -163,10 +160,10 @@ String contextPath = request.getContextPath();
 </body>
 </html>
 <script >
-var contextPath ="";
-$(document).ready(function() {
-	contextPath = "<%= request.getContextPath() %>";
-	console.log("contextPath : "+contextPath);
+//var contextPath ="";
+//$(document).ready(function() {
+<%-- 	contextPath = "<%= request.getContextPath() %>"; --%>
+//	console.log("contextPath : "+contextPath);
 	
 // 	$.prompt("Open your javascript console to see the answer.", {
 // 		title: "Are you Ready?",
@@ -183,7 +180,7 @@ $(document).ready(function() {
 	
 // 	$("#groupTable").DataTable();
 // 	$("#groupTablez").DataTable();
-});
+// });
 
 </script>
 <script type="text/javascript" src="<c:url value='/resources/js/mcassessment/assessment/degreeGoup.js'/>"></script>

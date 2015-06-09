@@ -22,7 +22,7 @@
 <link href="<c:url value='/resources/js/mcassessment/DataTables-1.10.6/css/dataTables.bootstrap.css'/>" rel="stylesheet"  type="text/css">
 <%-- <link href="<c:url value='/resources/assessment/css/dataTables.bootstrap.css'/>" rel="stylesheet"  type="text/css"> --%>
 <script type="text/javascript" src="<c:url value='/resources/assessment/js/jquery-1.11.2.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/resources/assessment/js/jquery-1.11.2.min.js'/>"></script>
+<%-- <script type="text/javascript" src="<c:url value='/resources/assessment/js/jquery-1.11.2.min.js'/>"></script> --%>
 <script type="text/javascript" src="<c:url value='/resources/assessment/js/jquery-impromptu.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/mcassessment/DataTables-1.10.6/js/jquery.dataTables.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/mcassessment/DataTables-1.10.6/js/jquery.dataTables.min.js'/>"></script>
@@ -39,7 +39,16 @@
 <link href="<c:url value='/resources/assessment/css/bootstrap-responsive.min.css'/>" rel="stylesheet"  type="text/css">
  --%>
 <title>${title}</title>
-<!-- </head> -->
+<%
+String contextPath = request.getContextPath();
+%>
+ <script >
+var contextPath ="";
+$(document).ready(function() {
+	contextPath = "<%= request.getContextPath() %>";
+// 	console.log("contextPath : "+contextPath);
 
- 
- 
+});
+
+</script>
+ </head>
