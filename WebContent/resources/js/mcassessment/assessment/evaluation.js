@@ -387,7 +387,7 @@ function deleteAjax(id){
 			if(deleteVal=="evaluation"){
 				loadEvaluation();
 			}else{
-//				loadQuestion(evalId);
+				loadQuestion(evalId);
 			}
 		}
 	},
