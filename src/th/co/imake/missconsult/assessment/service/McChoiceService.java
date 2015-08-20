@@ -26,6 +26,7 @@ public interface McChoiceService {
 //	public  List searchMcChoice(th.co.imake.missconsult.assessment.domain.McChoice  mcChoice,Paging paging);
 	public int updateMcChoiceByMcid(List<McChoice> mcChoiceList);
 	public int deleteMcChoice(List<McChoice> mcChoiceList);
+	public int deleteMcChoiceAll(String[][] choicesDelete);
 	public McChoice findMcChoiceByMcId(Integer mcId);
 	public List<th.co.imake.missconsult.assessment.model.McChoiceM> findMcChoiceByMqId(Integer mqid);
 	public int updateAddMcChoice(String[][] choices,String questionId);

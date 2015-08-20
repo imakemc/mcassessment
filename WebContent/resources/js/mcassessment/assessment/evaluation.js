@@ -29,6 +29,7 @@ function init(){
 		"bInfo":false,
 		"bPaginate":false,
 		"bFilter":false
+//		"order": [[ 0, "desc" ]]
 	});
 	
     var table = $('#choiceTable').DataTable();
@@ -55,8 +56,7 @@ function loadEvaluation(){
                 "fnServerData": function ( sSource, aoData, fnCallback ) {
             $.ajax( {
                 "dataType": 'json',
-                'contentType': "application/json; charset=utf-8",
-                "type": "GET",
+                "type": "POST",
                 "url": sSource,
                 "async" : true,
                 "data": {organizationId : 'xxx'},
@@ -69,9 +69,9 @@ function loadEvaluation(){
                 	}
                 },
     			"error" : function(xhr, status, error) {
-  				  console.log(arguments);	
-  				  alert(error);
-  				  alert(xhr.responseText);
+//  				  console.log(arguments);	
+//  				  alert(error);
+//  				  alert(xhr.responseText);
   				}
             } );
         }
@@ -122,9 +122,8 @@ function loadQuestion(meId){
         "sAjaxSource": contextPath+"/evaluation/ajaxGetQuestionAll",
                 "fnServerData": function ( sSource, aoData, fnCallback ) {
             $.ajax( {
-            	'contentType': "application/json; charset=utf-8",
                 "dataType": 'json',
-                "type": "GET",
+                "type": "POST",
                 "url": sSource,
                 "async" : true,
                 "data": {meid : meId},
@@ -139,8 +138,8 @@ function loadQuestion(meId){
                 },
     			"error" : function(xhr, status, error) {
   				  console.log(arguments);	
-  				  alert(error);
-  				  alert(xhr.responseText);
+//  				  alert(error);
+//  				  alert(xhr.responseText);
   				}
             } );
         }
@@ -176,25 +175,29 @@ function  setQuestionTable(data){
 function saveEvaluationTable(){
 	console.log('saveEvaluationTable');
 	var path = contextPath+"/evaluation/ajaxSaveAndGetIdEvaluation";
+	$('#summitInfo').prop("disabled",true);
 	var evalNameP = $("#evalName").val();
 	var evalIntroP = $("#introduction").val();
 	$.ajax({
 		url : path,
-		contentType: "application/json; charset=utf-8",
 		data : {
 			 evalName : evalNameP
 			,evalIntro : evalIntroP
+			,evaId : evalId
 			},
 		cache : false,
+		method: "POST",
 		dataType : "json",
 		async : false,
 	  "success": function(data){
 		console.log(data);
 		if(data!=null && data[0].id>=0){
-			evalId = data[0].id;
+			if(evalId==null){
+				evalId = data[0].id;
+				$('#t2').show();
+			}
 			loadEvaluation();
-			$('#t2').show();
-			
+			$('#summitInfo').prop("disabled",false);
 		}
 	},
 	"error" : function(xhr, status, error) {
@@ -203,9 +206,9 @@ function saveEvaluationTable(){
 //	    	$("#input-assessor").val("");
 //	    	$("#input-groupName").val("");
 //	    	$("#btnSummitDegreeGroup").text('Add');
-		  
-		  alert(error);
-		  alert(xhr.responseText);
+		  $('#summitInfo').prop("disabled",false);
+//		  alert(error);
+//		  alert(xhr.responseText);
 		}
 	});
 	
@@ -213,7 +216,10 @@ function saveEvaluationTable(){
 
 function onEditQ(mqId,type){
 	idVal = mqId;
+	deleteChoces = [];
+	onChkChoiceClick();
 	$("#btnSummitAddQuestion").text('Edit');
+	$('#btnSummitAddQuestion').prop("disabled",false);
 	console.log("Question id : "+idVal);
 	console.log("Eval id : "+evalId);
 	
@@ -245,9 +251,9 @@ function onEditQ(mqId,type){
 		}
 	},
 	"error" : function(xhr, status, error) {
-		  console.log(arguments);	
-		  alert(error);
-		  alert(xhr.responseText);
+//		  console.log(arguments);	
+//		  alert(error);
+//		  alert(xhr.responseText);
 		}
 	});
 	
@@ -261,7 +267,7 @@ function setQuestionFromPopup(data){
 	var table = $("#choiceTable").dataTable(); 
 	for (var i = 0; i < McChoice.length; i++) {
 		var element = McChoice[i];
-		table.fnAddData([
+		table.fnAddData([element.mcId,
 		                 "<div><input type='checkbox' id='chk"+i+"' name='vehicle' onClick='onChkChoiceClick();' value=null>"
 		                 +"<input id='mcText"+i+"' name='input-number1' value='"+(element.mcText)+"' style='width: 70%'  class='form-control numeric-x' ></div>",
 		                 "<input id='mcScore"+i+"' name='input-number1' value='"+(element.mcScore)+"' type='number' style='width: 100%' class='form-control numeric-x' data-bind='value:replyNumber'>"
@@ -280,7 +286,7 @@ function loadEvaluationValue(evalId){
 			evalId : evalId
 			},
 		cache : false,
-		contentType: "application/json; charset=utf-8",
+		method: "POST",
 		dataType : "json",
 		async : true,
 	  "success": function(data){
@@ -297,8 +303,8 @@ function loadEvaluationValue(evalId){
 //	    	$("#input-groupName").val("");
 //	    	$("#btnSummitDegreeGroup").text('Add');
 		  
-		  alert(error);
-		  alert(xhr.responseText);
+//		  alert(error);
+//		  alert(xhr.responseText);
 		}
 	});
 	
@@ -317,6 +323,7 @@ function loadEvaluationValue(evalId){
 function onAddEvalClick(){
 //	console.log("");
 	$('#t2').hide();
+	setPanalTabActive("pane1");
 	evalId =null;
 	$("#evalName").val("");
 	$("#introduction").val("");
@@ -327,6 +334,8 @@ function onAddEvalClick(){
 function editEvaluation(meID,meName,type){
 	console.log("meID,meName,type : "+meID+"  "+meName+"   "+type);
 	$('#t2').show();
+	$('#t2').removeClass('active');
+	setPanalTabActive("pane1");
 	evalId=meID;
 	generateTbChoices()
 	if("edit"==type){
@@ -368,7 +377,7 @@ function deleteAjax(id){
 			},
 		cache : false,
 		dataType : "json",
-		contentType: "application/json; charset=utf-8",
+		method: "POST",
 		async : true,
 	  "success": function(data){
 		console.log(data);
@@ -378,7 +387,7 @@ function deleteAjax(id){
 			if(deleteVal=="evaluation"){
 				loadEvaluation();
 			}else{
-//				loadQuestion(evalId);
+				loadQuestion(evalId);
 			}
 		}
 	},
@@ -389,8 +398,8 @@ function deleteAjax(id){
 //	    	$("#input-groupName").val("");
 //	    	$("#btnSummitDegreeGroup").text('Add');
 		  
-		  alert(error);
-		  alert(xhr.responseText);
+//		  alert(error);
+//		  alert(xhr.responseText);
 		}
 	});
 }
@@ -410,7 +419,12 @@ function generateTbChoices(){
 function addChoices(){
 	var table = $('#choiceTable').dataTable();
 	var length = table.fnGetData().length;
-	table.fnAddData([
+//	table.row.add(["",
+//	                 "<div><input type='checkbox' id='chk"+length+"' name='vehicle' onClick='onChkChoiceClick();' value=null>"
+//	                 +"<input id='mcText"+length+"' name='input-number1' value='"+(length+1)+"' style='width: 70%'  class='form-control numeric-x' ></div>",
+//	                 "<input id='mcScore"+length+"' name='input-number1' value='"+length+"' type='number' style='width: 100%' class='form-control numeric-x' data-bind='value:replyNumber'>"
+//	                 ]).draw();;
+	table.fnAddData(["x",
 	                 "<div><input type='checkbox' id='chk"+length+"' name='vehicle' onClick='onChkChoiceClick();' value=null>"
 	                 +"<input id='mcText"+length+"' name='input-number1' value='"+(length+1)+"' style='width: 70%'  class='form-control numeric-x' ></div>",
 	                 "<input id='mcScore"+length+"' name='input-number1' value='"+length+"' type='number' style='width: 100%' class='form-control numeric-x' data-bind='value:replyNumber'>"
@@ -449,14 +463,16 @@ function saveChoice(){
 	var Choices = [];
 	var table = $("#choiceTable").dataTable();
 	var datas = table.fnGetData();
+	var btnSummitFlag = $("#btnSummitAddQuestion").text();
 		console.log(datas);
 		for (var i = 0; i < datas.length; i++) 
 		{
 			var Choice = [];
 			var data = datas[i];
-			var mcId = null;
-			var mcText = $("#"+$(data[0]).find(".form-control").get(0).id).val();
-			var mcScore = $("#"+$(data[1]).get(0).id).val();
+//			var mcId = null;
+			var mcId = data[0];
+			var mcText = $("#"+$(data[1]).find(".form-control").get(0).id).val();
+			var mcScore = $("#"+$(data[2]).get(0).id).val();
 			Choice.push(mcId);
 			Choice.push(mcText);
 			Choice.push(mcScore);
@@ -472,13 +488,20 @@ function saveChoice(){
 		traditional: true,
 		data : {
 			choices : Choices,
-			questionId : idVal
+			questionId : idVal,
+			choicesDelete : deleteChoces
+//			flag : btnSummitFlag
 			},
 		cache : false,
 		dataType : "json",
 		async : true,
 	    "success": function(data){
 		console.log(data);
+		deleteChoces=[];
+		//reloadQuesion
+		loadEvaluationValue(evalId);
+	 	loadQuestion(evalId);
+	 	 $('#btnSummitAddQuestion').prop("disabled",false);
 //		if(data!=null && data.length>0 && data[0].id>-1){
 //			idVal=data[0].id;
 //			console.log("save Question id : "+idVal);
@@ -487,9 +510,10 @@ function saveChoice(){
 //		}
 	},
 	"error" : function(xhr, status, error) {
-		  console.log(arguments);	
-		  alert(error);
-		  alert(xhr.responseText);
+//		  console.log(arguments);	
+//		  alert(error);
+//		  alert(xhr.responseText);
+		  $('#btnSummitAddQuestion').prop("disabled",false);
 		}
 	});
 	
@@ -499,6 +523,7 @@ function onClickAddChoice(){
 	console.log("##@onClickAddChoice");
 	addChoices();
 }
+var deleteChoces =[];
 function onClickDeleteChoice(){
 	console.log("##@onClickDeleteChoice");
 	var table = $("#choiceTable").dataTable();
@@ -506,17 +531,33 @@ function onClickDeleteChoice(){
 	for(var i=indexs.length-1;i>=0;i--){
 		var buf = table.fnGetData(indexs[i]);
 		console.log(buf);
+		if("x"!=buf[0]){
+			var Choice = [];
+//			var data = buf[i];
+			var mcId = buf[0];
+			var mcText = $("#"+$(buf[1]).find(".form-control").get(0).id).val();
+			var mcScore = $("#"+$(buf[2]).get(0).id).val();
+			Choice.push(mcId);
+			Choice.push(mcText);
+			Choice.push(mcScore);
+			console.log(i+". "+mcText + "  " +mcScore);
+			deleteChoces.push(Choice);
+		}
 		console.log($(buf[1]).val());
 		table.fnDeleteRow(indexs[i]);
 	}
-	
+	onChkChoiceClick();
 }
 
 function onAddQuetionClick(){
 	$("#btnSummitAddQuestion").text('Add');
+	$('#btnSummitAddQuestion').prop("disabled",false);
 	$("#QThai").val("");
 	$("#QEng").val("");
 	idVal = null;
+	deleteChoces = [];
+	generateTbChoices();
+	onChkChoiceClick();
 	console.log("Question id : "+idVal);
 	console.log("Eval id : "+evalId);
 }
@@ -524,7 +565,7 @@ function onAddQuetionClick(){
 function saveQuetion(){
 	var QThai = $("#QThai");
 	var QEng = $("#QEng");
-	
+	$('#btnSummitAddQuestion').prop("disabled",true);
 	var path = contextPath;
 	var id =null;
 	var idType = $("#btnSummitAddQuestion").text();
@@ -550,7 +591,6 @@ function saveQuetion(){
 			id : id,
 			evalId : evalId,
 			qthai : QThai.val(),
-//			qthai : decodeURI(QThai.val()),
 			qeng : QEng.val(),
 			type: idType
 			},
@@ -562,22 +602,44 @@ function saveQuetion(){
 		if(data!=null && data.length>0 && data[0].id>-1){
 			idVal=data[0].id;
 			console.log("save Question id : "+idVal);
+			saveChoice();
+//			$('#btnSummitAddQuestion').prop("disabled",true);
+
+			if(idType=="Add"){
+				$("#btnSummitAddQuestion").text('Edit');
+			}
 		}else{
 			alert("save faile!!!");
+//			$('#btnSummitAddQuestion').prop("disabled",false);
+//			$("#btnSummitAddQuestion").text('Add');
+			$('#btnSummitAddQuestion').prop("disabled",false);
+			if(idType=="Add"){
+				$("#btnSummitAddQuestion").text('Add');
+			}
 		}
 	},
 	"error" : function(xhr, status, error) {
 		  console.log(arguments);	
-		  
 //	    	$("#input-assessor").val("");
 //	    	$("#input-groupName").val("");
 //	    	$("#btnSummitDegreeGroup").text('Add');
-		  
-		  alert(error);
-		  alert(xhr.responseText);
+//		  alert(error);
+//		  alert(xhr.responseText);
+//			$('#btnSummitAddQuestion').prop("disabled",false);
+//			$("#btnSummitAddQuestion").text('Add');
+		  $('#btnSummitAddQuestion').prop("disabled",false);
 		}
 	});
 	
+}
+
+function setPanalTabActive(idPanal){
+	$('.tab-pane').each(function(index ){
+		//$(this).attr('class','');
+		$(this).removeClass('active');
+
+		})
+		$('#'+idPanal).addClass('active');
 }
 
 //called when key is pressed in textbox

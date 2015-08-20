@@ -2,16 +2,10 @@
 <%@ include file="/WEB-INF/jsp/includes.jsp" %>
 
 <jsp:include page="../header.jsp" />
-<%
-String contextPath = request.getContextPath();
-%>
 
-</head>
 <body>
 	<jsp:include page="../headerNavi.jsp" />
 	<div class="paperContent container">
-<!-- 	<button id="btnAjaxCall" onclick="ajaxtest(this)">Ajax call</button> -->
-<!-- 	<button id="btnAjaxCall" onclick="doAjaxPost()">doAjaxPost call</button> -->
 	 <div id="result"></div>
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2"
@@ -34,7 +28,6 @@ String contextPath = request.getContextPath();
 	
 
 	
-<!--  --------------------------------	 -->
 	<!-- ----------------------------------Question-popup------------------------------------------------------------- -->
 <div id="add-edit-popup" class="modal fade" tabindex="-1">
 	  <div class="modal-dialog">
@@ -186,6 +179,7 @@ String contextPath = request.getContextPath();
 		                <table id="choiceTable" class="table tb table-hover border"style="margin-bottom: 15px;">
 		                	<thead>
 			     				<tr class="headerTables">
+				     				<td class="col-md-2">Id</td>
 				     				<td class="col-md-2">Order</td>
 				     				<td class="col-md-2">Score</td>
 				     			</tr>
@@ -244,11 +238,4 @@ String contextPath = request.getContextPath();
 <!-- --------------------------------------------------------------------------- -->
 </body>
 </html>
-<script>
-var contextPath ="";
-$(document).ready(function() {
-	contextPath = "<%= request.getContextPath() %>";
-	console.log("contextPath : "+contextPath);
-});
-</script>
 <script type="text/javascript"  charset="utf-8" src="<c:url value='/resources/js/mcassessment/assessment/evaluation.js'/>"></script>

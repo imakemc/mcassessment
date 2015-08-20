@@ -42,7 +42,7 @@ $(document).ready(function() {
 
 function loadTableFirst(){
 	
-	console.log("contextPath : "+contextPath);
+//	console.log("contextPath : "+contextPath);
 	// ----------
 	    	    $('#degreeGuop').dataTable({
 	    		'iDisplayLength': 10,

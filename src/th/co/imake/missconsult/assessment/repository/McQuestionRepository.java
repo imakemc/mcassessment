@@ -160,6 +160,7 @@ public class McQuestionRepository  {
 			query.setParameter(i++, mcQuestion.getMaNameEng());
 			query.setParameter(i++, mcQuestion.getMqId());
 			record = query.executeUpdate();
+
 		}catch(Exception exception){
 			exception.printStackTrace();
 		}

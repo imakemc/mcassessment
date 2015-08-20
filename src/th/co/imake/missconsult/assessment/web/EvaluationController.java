@@ -48,7 +48,7 @@ public class EvaluationController {
 	        return "assesment/evaluation";
 	    } 
 	 
-		@RequestMapping(value = "/ajaxGetEvaluationAll", method = RequestMethod.GET)
+		@RequestMapping(value = "/ajaxGetEvaluationAll", method = RequestMethod.POST)
 	    public @ResponseBody
 	    List<McEvaluationM>  ajaxGetEvaluationAlll(@RequestParam String organizationId) {
 			System.out.println("organizationId : "+organizationId);
@@ -58,7 +58,7 @@ public class EvaluationController {
 	        return list;
 	    }
 		
-		@RequestMapping(value = "/ajaxGetEvaluationByEvalId", method = RequestMethod.GET)
+		@RequestMapping(value = "/ajaxGetEvaluationByEvalId", method = RequestMethod.POST)
 	    public @ResponseBody
 	    List<McEvaluationM>  ajaxGetEvaluationByEvalId(@RequestParam Integer evalId) {
 			System.out.println("evalId : "+evalId);
@@ -66,7 +66,7 @@ public class EvaluationController {
 	        return list;
 	    }
 		
-		@RequestMapping(value = "/ajaxGetQuestionAll", method = RequestMethod.GET)
+		@RequestMapping(value = "/ajaxGetQuestionAll", method = RequestMethod.POST)
 		public @ResponseBody
 		List<McQuestionM>  ajaxGetQuestionAll(@RequestParam Integer meid) {
 			System.out.println("meid : "+meid);
@@ -80,15 +80,22 @@ public class EvaluationController {
 			return list;
 		}
 		
-		@RequestMapping(value = "/ajaxSaveAndGetIdEvaluation", method = RequestMethod.GET)
+		@RequestMapping(value = "/ajaxSaveAndGetIdEvaluation", method = RequestMethod.POST)
 		public @ResponseBody
-		List<Map<String, Integer>>  ajaxSaveAndGetIdEvaluation(@RequestParam String evalName, String evalIntro) {
+		List<Map<String, Integer>>  ajaxSaveAndGetIdEvaluation(@RequestParam String evalName, String evalIntro,Integer evaId) {
 			System.out.println("evalName : "+evalName);
 			System.out.println("evalIntro : "+evalIntro);
+			System.out.println("evaId : "+evaId);
 			McEvaluation evaluation = new McEvaluation();
 			evaluation.setMcIntro(evalIntro);
 			evaluation.setMeName(evalName);
-			Integer id =  mcEvaluationService.insertAll(evaluation);
+			Integer id;
+			if(evaId!=null){
+				evaluation.setMeId(evaId);
+				id = mcEvaluationService.updateMcEvaluation(evaluation);
+			}else{
+				id =  mcEvaluationService.insertAll(evaluation);
+			}
 			List<Map<String, Integer>> list = new ArrayList<Map<String,Integer>>();
 			Map<String, Integer> maps = new HashMap<String, Integer>();
 			maps.put("id", id);
@@ -96,7 +103,7 @@ public class EvaluationController {
 			return list;
 		}
 		
-		@RequestMapping(value = "/ajaxDeleteEvaluation", method = RequestMethod.GET)
+		@RequestMapping(value = "/ajaxDeleteEvaluation", method = RequestMethod.POST)
 		public @ResponseBody
 		List<Map<String, Integer>>  ajaxDeleteEvaluation(@RequestParam Integer id) {
 			System.out.println("id : "+id);
@@ -108,7 +115,7 @@ public class EvaluationController {
 			return list;
 		}
 		
-		@RequestMapping(value = "/ajaxDeleteQuestion", method = RequestMethod.GET)
+		@RequestMapping(value = "/ajaxDeleteQuestion", method = RequestMethod.POST)
 		public @ResponseBody
 		List<Map<String, Integer>>  ajaxDeleteQuestion(@RequestParam Integer id) {
 			System.out.println("id : "+id);
@@ -149,7 +156,7 @@ public class EvaluationController {
 				
 			}else{
 				System.out.println("Edit Question");
-				id = mcQuestionService.updateByMqId(mcQuestion);
+				mcQuestionService.updateByMqId(mcQuestion);
 			}
 					
 			
@@ -168,14 +175,21 @@ public class EvaluationController {
 		
 		@RequestMapping(value = "/ajaxAddEditChoices", method = RequestMethod.POST)
 		public @ResponseBody
-		List<Map<String, Integer>>  ajaxAddEditChoices(@RequestParam(value="choices", required=false) String[][] choices ,@RequestParam String questionId) {
+		List<Map<String, Integer>>  ajaxAddEditChoices(@RequestParam(value="choices", required=false) String[][] choices ,@RequestParam(value="choicesDelete", required=false) String[][] choicesDelete ,@RequestParam String questionId) {
 			System.out.println("Choices : "+choices);
+			System.out.println("choicesDelete : "+choicesDelete);
 //			Integer record =  mcQuestionService.deleteByMqId(id);
-			Integer record =  mcChoiceService.updateAddMcChoice(choices,questionId);
-			List<Map<String, Integer>> list = new ArrayList<Map<String,Integer>>();
 			Map<String, Integer> maps = new HashMap<String, Integer>();
-//			maps.put("record", record);
-			maps.put("record", 0);
+			Integer record =  mcChoiceService.updateAddMcChoice(choices,questionId);
+			Integer recordDel=0;
+			if(choicesDelete!=null && choicesDelete.length>0){
+				recordDel =  mcChoiceService.deleteMcChoiceAll(choicesDelete);
+			}
+			List<Map<String, Integer>> list = new ArrayList<Map<String,Integer>>();
+			maps.put("record", record);
+			maps.put("recordDelete", recordDel);
+//			maps.put("recordTotal", recordDel+record);
+//			maps.put("record", 0);
 			list.add(maps);
 			return list;
 		}

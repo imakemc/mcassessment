@@ -1,4 +1,6 @@
-<header>
+
+<!-- <header> -->
+
 			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 				<div class="container-fluid" style="margin-top: 20px;">
 					<div class="navbar-header">
@@ -13,15 +15,15 @@
 					<div>
 						<div class="collapse navbar-collapse" id="mynavbar-collapse">
 							<ul class="nav navbar-nav navbar-right">
-								<li class="active"><a href="file:///root/Desktop/mcs/WebContent/Order.html#">Order</a></li>
-								<li><a href="file:///root/Desktop/mcs/WebContent/index.html#">Customer</a></li>
+								<li class="active"><a href="../order/list">Order</a></li>
+								<li><a href="../customer/list">Customer</a></li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Setting<span class="caret"></span></a>
 									<ul class="dropdown-menu navbar-inverse" role="menu">
-										<li><a href="file:///root/Desktop/mcs/WebContent/Series.html#" style="color: #fff;">Series</a></li>
+										<li><a href="../series/list" style="color: #fff;">Series</a></li>
 										<li class="divider"></li>
-										<li><a href="file:///root/Desktop/mcs/WebContent/Evaluation.html#" style="color: #fff;">Evaluation</a></li>
+										<li><a href="../evaluation/list" style="color: #fff;">Evaluation</a></li>
 										<li class="divider"></li>
-										<li><a href="file:///root/Desktop/mcs/WebContent/Degree_Group.html#" style="color: #fff;">Degree Group</a></li>
+										<li><a href="../degree/list" style="color: #fff;">Degree Group</a></li>
 										<li class="divider"></li>
 									</ul>
 								</li>
@@ -30,4 +32,4 @@
 					</div>
 				</div>
 			</nav>
-		</header>
+<!-- 		</header> -->
